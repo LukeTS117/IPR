@@ -1,0 +1,15 @@
+C:\git\IPR\IPR\IPR\bin\Debug\IPR.exe.config
+C:\git\IPR\IPR\IPR\bin\Debug\IPR.exe
+C:\git\IPR\IPR\IPR\bin\Debug\IPR.pdb
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
+C:\git\IPR\IPR\IPR\obj\Debug\MainWindow.g.cs
+C:\git\IPR\IPR\IPR\obj\Debug\App.g.cs
+C:\git\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.cache
+C:\git\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.lref
+C:\git\IPR\IPR\IPR\obj\Debug\MainWindow.baml
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.g.resources
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.exe
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.pdb

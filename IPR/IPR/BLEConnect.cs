@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace IPR
 {
-    class Class1
+    class BLEConnect
     {
+
+        public string erogID;
+
+        public BLEConnect(string ergoID)
+        {
+            this.erogID = ergoID;
+        }
+
+
     }
 }

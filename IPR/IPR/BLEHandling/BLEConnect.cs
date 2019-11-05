@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Avans.TI.BLE;
+using IPR.BLEHandling;
 
 namespace IPR
 {
@@ -14,11 +15,14 @@ namespace IPR
         public BLE ergoBLE { get; set; }
         public BLE heartRateBLE { get; set; }
 
+        public BLEHandler bleHandler;
+
         public BLEConnect(string ergoID)
         {
             this.ergoID = ergoID;
             this.ergoBLE = new BLE();
             this.heartRateBLE = new BLE();
+            bleHandler = new BLEHandler(this);
         }
 
         public void Connect()
@@ -41,11 +45,13 @@ namespace IPR
             await heartRateBLE.SetService("HeartRate");
 
             //Subscribe
+            ergoBLE.SubscriptionValueChanged += this.sendData;
+            heartRateBLE.SubscriptionValueChanged += this.sendData;
             string service2 = "6e40fec2-b5a3-f393-e0a9-e50e24dcca9e";
             errorCodeErgo = await ergoBLE.SubscribeToCharacteristic(service2);
             errorCodeHeartRate = await heartRateBLE.SubscribeToCharacteristic("HeartRateMeasurement");
 
-            Console.WriteLine($"Error code ergo:{errorCodeErgo} \n Error code heartRate: {errorCodeHeartRate}");
+            Console.WriteLine($"Error code ergo:{errorCodeErgo} \nError code heartRate: {errorCodeHeartRate}");
 
         }
 
@@ -57,6 +63,11 @@ namespace IPR
             {
                 Console.WriteLine($"Device: {deviceName}");
             }
+        }
+
+        public void sendData(object sender, BLESubscriptionValueChangedEventArgs e)
+        {
+            bleHandler.handleData(e.Data);
         }
 
 

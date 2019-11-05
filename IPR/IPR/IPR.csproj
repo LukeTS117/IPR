@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLELibrary">
+      <HintPath>..\..\..\First Repo\RemoteHealthcare\Remote_Healthcare_App_B2\BLELibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -66,7 +69,8 @@
     <Compile Include="AstrandTest\IAstrandData.cs" />
     <Compile Include="AstrandTest\AstrandTest.cs" />
     <Compile Include="AstrandTest\AstrandTestPhase.cs" />
-    <Compile Include="BLEConnect.cs" />
+    <Compile Include="BLEHandling\BLEConnect.cs" />
+    <Compile Include="BLEHandling\BLEHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

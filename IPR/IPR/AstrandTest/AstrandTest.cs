@@ -13,7 +13,6 @@ namespace IPR.AstrandTest
         private static int ROTATIONTARGET_MIN = 50;
         private static int ROTATIONTARGET_MAX = 60;
         private readonly IAstrandData data;
-        private static System.Timers.Timer timer;
 
 
         public void StartTest()

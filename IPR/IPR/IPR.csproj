@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AstrandTest\IAstrandData.cs" />
+    <Compile Include="AstrandTest\AstrandTest.cs" />
+    <Compile Include="AstrandTest\AstrandTestPhase.cs" />
     <Compile Include="BLEConnect.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -20,9 +20,21 @@ namespace IPR
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BLEConnect bleConnection;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void BLEConnect(string ergoID)
+        {
+            bleConnection = new BLEConnect(ergoID);
+            bleConnection.Connect();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.BLEConnect(textBox1.Text);
         }
     }
 }

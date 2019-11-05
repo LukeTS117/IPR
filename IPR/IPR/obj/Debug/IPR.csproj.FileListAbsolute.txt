@@ -13,3 +13,5 @@ C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.exe
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.pdb
+C:\git\IPR\IPR\IPR\bin\Debug\BLELibrary.dll
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete

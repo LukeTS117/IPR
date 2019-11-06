@@ -66,6 +66,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileWriter.cs" />
     <Compile Include="Views\Connect.xaml.cs">
       <DependentUpon>Connect.xaml</DependentUpon>
     </Compile>

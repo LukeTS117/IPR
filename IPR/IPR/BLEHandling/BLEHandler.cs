@@ -21,11 +21,20 @@ namespace IPR.BLEHandling
         {
             if(rawData[0] == 22)
             {
-                Console.WriteLine("Heartrate message");
+                int heartRate = rawData[1];
+                Console.WriteLine("Heartrat: " + heartRate);
             }
             else if(rawData[0] == 164)
             {
-                Console.WriteLine("Ergo message");
+                int messageLength = rawData[1];
+                byte[] message = rawData.Skip(4).Take(messageLength).ToArray();
+                int pageNumber = message[0];
+
+                if(pageNumber == 25)
+                {
+                    int instanteousCadence = message[2];
+                    Console.WriteLine("instantaneos cadence:" + instanteousCadence);
+                }
             }
         }
     }

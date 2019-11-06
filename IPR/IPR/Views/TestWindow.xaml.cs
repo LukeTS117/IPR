@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +23,22 @@ namespace IPR
     public partial class TestWindow : Page
     {
         private delegate void OneArgDelagate(object arg);
-
+        public SeriesCollection seriesView { get; set; }
 
         public TestWindow()
         {
             InitializeComponent();
+
+            seriesView = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Series 1",
+                    Values = new ChartValues<double> { 4, 6, 5, 2 ,4 }
+                }
+            };
+
+            DataContext = this;
 
             AstrandTest.AstrandTest at = new AstrandTest.AstrandTest();
             OneArgDelagate fetcher = new OneArgDelagate(at.StartTest);

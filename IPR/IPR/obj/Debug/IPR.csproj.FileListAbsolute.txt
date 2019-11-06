@@ -13,7 +13,6 @@ C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.exe
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.pdb
-C:\git\IPR\IPR\IPR\bin\Debug\BLELibrary.dll
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
 <<<<<<< HEAD
 D:\IPRforrealthistime\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
@@ -45,3 +44,7 @@ C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
 C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
 C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml
 >>>>>>> master
+C:\git\IPR\IPR\IPR\obj\Debug\Views\Connect.g.cs
+C:\git\IPR\IPR\IPR\obj\Debug\Views\TestWindow.g.cs
+C:\git\IPR\IPR\IPR\obj\Debug\Views\Connect.baml
+C:\git\IPR\IPR\IPR\obj\Debug\Views\TestWindow.baml

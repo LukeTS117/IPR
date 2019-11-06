@@ -23,7 +23,7 @@ namespace IPR
     public partial class TestWindow : Page
     {
 
-        private delegate void OneArgDelagate(object arg);
+        private delegate void OneArgDelagate();
         public SeriesCollection seriesView { get; set; }
 
 
@@ -38,6 +38,8 @@ namespace IPR
         private int weight;
         private int ergoID;
         private Sex sex;
+
+        AstrandTest.AstrandTest at = null;
 
 
         public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex)
@@ -63,9 +65,14 @@ namespace IPR
             this.sex = sex;
 
 
-            AstrandTest.AstrandTest at = new AstrandTest.AstrandTest();
+            this.at = new AstrandTest.AstrandTest(this);
+            
+        }
+
+        private void Button_StartTest_Click(object Sender, RoutedEventArgs e)
+        {
             OneArgDelagate fetcher = new OneArgDelagate(at.StartTest);
-            fetcher.BeginInvoke(this, null, null);
+            fetcher.BeginInvoke(null, null);
         }
 
         public void UpdateUI(string data)

@@ -106,13 +106,5 @@ namespace IPR
             Console.WriteLine(data);
         }
 
-        private bool CheckInput()
-        {
-
-           
-
-
-            return true;
-        }
     }
 }

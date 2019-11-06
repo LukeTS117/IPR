@@ -7,10 +7,10 @@
       xmlns:local="clr-namespace:IPR"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TestWindow">
+      Title="TestWindow" >
 
     <Grid Background="White">
-        <lvc:CartesianChart Series= "{Binding seriesView}" LegendLocation="Right" Margin="279,0,0,179">
+        <lvc:CartesianChart Series= "{Binding seriesView}" LegendLocation="Right" Margin="259,85,20,94.6">
             
         </lvc:CartesianChart>
     </Grid>

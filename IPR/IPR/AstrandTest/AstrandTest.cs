@@ -23,9 +23,13 @@ namespace IPR.AstrandTest
         private TestWindow testWindow;
 
 
-        public void StartTest(object Sender)
+        public AstrandTest(object TestWindow)
         {
-            this.testWindow = Sender as TestWindow;
+            this.testWindow = TestWindow as TestWindow;
+        }
+
+        public void StartTest()
+        {
             ChangePhase(AstrandTestPhase.WARMING_UP);
         }
 

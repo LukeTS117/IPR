@@ -4,23 +4,17 @@
 winexe
 C#
 .cs
-D:\IPRforrealthistime\IPR\IPR\IPR\obj\Debug\
+C:\git\IPR\IPR\IPR\obj\Debug\
 IPR
 none
 false
 DEBUG;TRACE
-D:\IPRforrealthistime\IPR\IPR\IPR\App.xaml
+C:\git\IPR\IPR\IPR\App.xaml
 3-1623061463
 
-<<<<<<< HEAD
-12-301922368
-16792940905
+132036669572
+181990092127
 Views\Connect.xaml;MainWindow.xaml;Views\TestWindow.xaml;
-=======
-11295086199
-16-291932981
-MainWindow.xaml;
->>>>>>> master
 
 False
 

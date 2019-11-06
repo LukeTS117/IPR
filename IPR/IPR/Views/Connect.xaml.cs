@@ -40,15 +40,8 @@ namespace IPR
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //if (ConnectBLE(textBox1.Text))
-            //{
+             bool inputCorrect = true;
 
-            bool inputCorrect = true;
-
-            int patientID;
-            int age;
-            int weight;
-            int ergoID;
             TestWindow.Sex sex = TestWindow.Sex.Other;
 
             //Reset all labels to White
@@ -60,24 +53,24 @@ namespace IPR
 
 
             //Check all fields for correct input, else change label color to red // //  
-            if (!int.TryParse(TextBox_PatientID.Text, out patientID))
+            if (!int.TryParse(TextBox_PatientID.Text, out int patientID))
             {
                 inputCorrect = false;
                 Label_PatientID.Foreground = Brushes.Red;
             }
 
-            if (!int.TryParse(TextBox_Age.Text, out age))
+            if (!int.TryParse(TextBox_Age.Text, out int age))
             {
                 inputCorrect = false;
                 Label_Age.Foreground = Brushes.Red;
             }
 
-            if (!int.TryParse(TextBox_Weight.Text, out weight))
+            if (!int.TryParse(TextBox_Weight.Text, out int weight))
             {
                 inputCorrect = false;
                 Label_Weight.Foreground = Brushes.Red;
             }
-            if (!int.TryParse(TextBox_ErgoID.Text, out ergoID))
+            if (!int.TryParse(TextBox_ErgoID.Text, out int ergoID))
             {
                 inputCorrect = false;
                 Label_ErgoID.Foreground = Brushes.Red;
@@ -106,12 +99,6 @@ namespace IPR
                 this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex));
             }
             
-
-            
-
-
-
-            // }
         }
 
         public void UpdateUI(string data)

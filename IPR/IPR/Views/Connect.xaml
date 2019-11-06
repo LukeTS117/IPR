@@ -1,0 +1,28 @@
+﻿<Page x:Class="IPR.Connect"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IPR"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="Connect">
+
+    <Grid Background="#FF626262">
+        <TextBox x:Name="TextBox_ErgoID" HorizontalAlignment="Center" Height="23" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
+        <Button Content="Connect" HorizontalAlignment="Center" Margin="502,387,502,315" VerticalAlignment="Center" Width="76" Click="Button_Click"/>
+        <TextBox x:Name="TextBox_PatientID" HorizontalAlignment="Center" Height="23" Margin="480,195,480,502" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
+        <TextBox x:Name="TextBox_Age" HorizontalAlignment="Center" Height="23" Margin="480,223,480,474" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
+        <TextBox x:Name="TextBox_Weight" HorizontalAlignment="Center" Height="23" Margin="480,279,480,418" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
+        <Label x:Name="Label_PatientID" Content="PatientID" HorizontalAlignment="Left" Margin="417,192,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_Age" Content="Age" HorizontalAlignment="Left" Margin="417,220,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_Sex" Content="Sex" HorizontalAlignment="Left" Margin="417,248,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_ErgoID" Content="ErgoID" HorizontalAlignment="Left" Margin="417,346,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_Weight" Content="Weight" HorizontalAlignment="Left" Margin="417,276,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="ComboBox_Sex" HorizontalAlignment="Left" Margin="480,251,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="Male"/>
+            <ComboBoxItem Content="Female"/>
+            <ComboBoxItem Content="Other"/>
+        </ComboBox>
+    </Grid>
+</Page>

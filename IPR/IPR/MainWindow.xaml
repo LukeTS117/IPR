@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IPR"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1080">
     <Grid>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="310,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Connect" HorizontalAlignment="Left" Margin="332,292,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="720" Margin="0" VerticalAlignment="Bottom" Width="1080" NavigationUIVisibility="Hidden"/>
+       
 
     </Grid>
 </Window>

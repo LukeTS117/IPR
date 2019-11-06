@@ -12,25 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
- 
 
 namespace IPR
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TestWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TestWindow : Page
     {
+        private delegate void OneArgDelagate(object arg);
 
-       
-        
-        public MainWindow()
+
+        public TestWindow()
         {
-
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new Connect());
+
+            AstrandTest.AstrandTest at = new AstrandTest.AstrandTest();
+            OneArgDelagate fetcher = new OneArgDelagate(at.StartTest);
+            fetcher.BeginInvoke(this, null, null);
         }
 
-       
+        public void UpdateUI(string data)
+        {
+
+        }
     }
 }

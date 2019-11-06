@@ -15,3 +15,9 @@ C:\git\IPR\IPR\IPR\obj\Debug\IPR.exe
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.pdb
 C:\git\IPR\IPR\IPR\bin\Debug\BLELibrary.dll
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
+C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.dll
+C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.dll
+C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.pdb
+C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
+C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
+C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml

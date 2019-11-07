@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IPR.AstrandTest;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,17 +24,19 @@ namespace IPR
     {
 
         private BLEConnect bleConnection;
-       
+        private HistoricData dataRetriever;
+
 
         public Connect()
         {
             InitializeComponent();
+            dataRetriever = new HistoricData();
         }
 
         public bool ConnectBLE(string ergoID)
         {
             bleConnection = new BLEConnect(ergoID);
-            bleConnection.Connect();
+            bleConnection.Connect(this);
 
             return true;
         }
@@ -74,8 +77,6 @@ namespace IPR
             {
                 inputCorrect = false;
                 Label_ErgoID.Foreground = Brushes.Red;
-
-                //ConnectBLE(TextBox_ErgoID.Text);
             }
 
             if (ComboBox_Sex.SelectedIndex != -1)
@@ -96,9 +97,15 @@ namespace IPR
 
             if (inputCorrect)
             {
-                this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex));
+                this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, dataRetriever));
+                ConnectBLE(TextBox_ErgoID.Text);
             }
             
+        }
+
+        public void NoConnection()
+        {
+            dataRetriever.ReadFile();
         }
 
         public void UpdateUI(string data)

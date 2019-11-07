@@ -26,11 +26,13 @@ namespace IPR.AstrandTest
         public AstrandTest(object TestWindow)
         {
             this.testWindow = TestWindow as TestWindow;
+            data = new HistoricData();
         }
 
         public void StartTest()
         {
             ChangePhase(AstrandTestPhase.WARMING_UP);
+            this.testWindow.UpdateUI(data.GetHeartFrequency());
         }
 
         private void ChangePhase(AstrandTestPhase phase)

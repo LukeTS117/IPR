@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPR
+namespace IPR.AstrandTest
 {
-    class FileWriter
+    class HistoricData: IAstrandData
     {
 
         string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public int heartRate;
         public void WriteToFile(string message)
         {
 
@@ -33,30 +34,43 @@ namespace IPR
             }
         }
 
-        public string ReadFile()
+        public void ReadFile()
         {
 
             string path = this.dir + @"\TestData.txt";
-            string packet = "";
+            string s;
+            
 
             if (File.Exists(path))
             {
                 using (StreamReader sr = File.OpenText(path))
                 {
-                    while (sr.ReadLine() != null)
+                    while ((s = sr.ReadLine()) != null)
                     {
-                        packet += sr.ReadLine();
+                        if (s.Contains("<HR>"))
+                        {
+                            heartRate = Int32.Parse(s.Substring(4));
+                            
+                        }
                     }
-                    return packet;
                 }
             }
             else
             {
                 Console.WriteLine("This file does not exist");
-                return "";
             }
 
 
+        }
+
+        public int GetHeartFrequency()
+        {
+            return heartRate;
+        }
+
+        public int PushRotation()
+        {
+            throw new NotImplementedException();
         }
     }
 }

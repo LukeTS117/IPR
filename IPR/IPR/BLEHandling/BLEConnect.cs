@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Avans.TI.BLE;
+using IPR.AstrandTest;
 using IPR.BLEHandling;
 
 namespace IPR
@@ -14,8 +15,10 @@ namespace IPR
         public string ergoID;
         public BLE ergoBLE { get; set; }
         public BLE heartRateBLE { get; set; }
+        public bool isConnected = true;
 
         public BLEHandler bleHandler;
+        
 
         public BLEConnect(string ergoID)
         {
@@ -25,12 +28,13 @@ namespace IPR
             bleHandler = new BLEHandler(this);
         }
 
-        public void Connect()
+        public void Connect(object o)
         {
-            this.connectToBLE(this.ergoBLE, this.heartRateBLE, this.ergoID);
+            this.connectToBLE(this.ergoBLE, this.heartRateBLE, this.ergoID, o);
+
         }
 
-        private async void connectToBLE(BLE ergoBLE, BLE heartRateBLE, string ergoID)
+        private async void connectToBLE(BLE ergoBLE, BLE heartRateBLE, string ergoID, object o)
         {
             // Connection attempt
             int errorCodeErgo = await ergoBLE.OpenDevice($"Tacx Flux {ergoID}");
@@ -52,7 +56,12 @@ namespace IPR
             errorCodeHeartRate = await heartRateBLE.SubscribeToCharacteristic("HeartRateMeasurement");
 
             Console.WriteLine($"Error code ergo:{errorCodeErgo} \nError code heartRate: {errorCodeHeartRate}");
-
+            if(errorCodeErgo != 0 && errorCodeHeartRate != 0)
+            {
+                IPR.Connect connect = o as IPR.Connect;
+                connect.NoConnection();
+            }
+            
         }
 
         private static void PrintDevices(BLE ergoMeterBle)

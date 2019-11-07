@@ -1,5 +1,4 @@
-﻿using IPR.AstrandTest;
-using LiveCharts;
+﻿using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -24,9 +23,10 @@ namespace IPR
     public partial class TestWindow : Page
     {
 
-
+<<<<<<< HEAD
+=======
         private delegate void OneArgDelagate();
-
+>>>>>>> master
         public SeriesCollection seriesView { get; set; }
 
 
@@ -42,10 +42,13 @@ namespace IPR
         private int ergoID;
         private Sex sex;
 
+<<<<<<< HEAD
+=======
         AstrandTest.AstrandTest at = null;
 
+>>>>>>> master
 
-        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex, HistoricData historicData)
+        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex)
         {
             InitializeComponent();
 
@@ -66,6 +69,10 @@ namespace IPR
             this.weight = weight;
             this.ergoID = ergoID;
             this.sex = sex;
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 
 
             this.at = new AstrandTest.AstrandTest(this);
@@ -78,9 +85,9 @@ namespace IPR
             fetcher.BeginInvoke(null, null);
         }
 
-        public void UpdateUI(int data)
+        public void UpdateUI(string data)
         {
-            seriesView[0].Values.Add((double)data);
+
         }
     }
 }

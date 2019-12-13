@@ -73,9 +73,7 @@ namespace IPR
             if (!int.TryParse(TextBox_ErgoID.Text, out int ergoID))
             {
                 inputCorrect = false;
-                Label_ErgoID.Foreground = Brushes.Red;
-
-                //ConnectBLE(TextBox_ErgoID.Text);
+                Label_ErgoID.Foreground = Brushes.Red;                
             }
 
             if (ComboBox_Sex.SelectedIndex != -1)
@@ -97,6 +95,7 @@ namespace IPR
             if (inputCorrect)
             {
                 this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex));
+                ConnectBLE(TextBox_ErgoID.Text);
             }
             
         }

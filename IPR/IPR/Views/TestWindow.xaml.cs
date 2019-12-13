@@ -23,10 +23,9 @@ namespace IPR
     public partial class TestWindow : Page
     {
 
-<<<<<<< HEAD
-=======
+
         private delegate void OneArgDelagate();
->>>>>>> master
+
         public SeriesCollection seriesView { get; set; }
 
 
@@ -42,11 +41,10 @@ namespace IPR
         private int ergoID;
         private Sex sex;
 
-<<<<<<< HEAD
-=======
+
         AstrandTest.AstrandTest at = null;
 
->>>>>>> master
+
 
         public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex)
         {
@@ -69,10 +67,7 @@ namespace IPR
             this.weight = weight;
             this.ergoID = ergoID;
             this.sex = sex;
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
 
             this.at = new AstrandTest.AstrandTest(this);
@@ -85,9 +80,12 @@ namespace IPR
             fetcher.BeginInvoke(null, null);
         }
 
-        public void UpdateUI(string data)
+        public void UpdateUI(List<int> data)
         {
-
+            foreach(int dataPoint in data)
+            {
+                seriesView[0].Values.Add((double)dataPoint);
+            }
         }
     }
 }

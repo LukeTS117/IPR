@@ -53,6 +53,11 @@ namespace IPR
 
             Console.WriteLine($"Error code ergo:{errorCodeErgo} \nError code heartRate: {errorCodeHeartRate}");
 
+            if (errorCodeErgo != 0 && errorCodeHeartRate != 0)
+            {
+                //ask to use dummy data
+
+            }
         }
 
         private static void PrintDevices(BLE ergoMeterBle)

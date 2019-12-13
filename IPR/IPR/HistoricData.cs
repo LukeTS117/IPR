@@ -1,16 +1,18 @@
-﻿using System;
+﻿using IPR.AstrandTest;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace IPR
 {
-    class FileWriter
+    class HistoricData: IAstrandData
     {
 
-        string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);\
+        List<int> hrList;
         public void WriteToFile(string message)
         {
 
@@ -33,30 +35,48 @@ namespace IPR
             }
         }
 
-        public string ReadFile()
+        public List<int> ReadFile()
         {
 
             string path = this.dir + @"\TestData.txt";
-            string packet = "";
+            string s;
+            this.hrList = new List<int>();
 
             if (File.Exists(path))
             {
                 using (StreamReader sr = File.OpenText(path))
                 {
-                    while (sr.ReadLine() != null)
+                    while ((s = sr.ReadLine()) != null)
                     {
-                        packet += sr.ReadLine();
+                        if (s.Contains("<HR>"))
+                        {
+                           this.hrList.Add(Int32.Parse(s.Substring(4)));
+                        }                            
                     }
-                    return packet;
+                    return hrList;
                 }
             }
             else
             {
                 Console.WriteLine("This file does not exist");
-                return "";
+                return null;
             }
 
 
+        }
+
+        public int GetHeartFrequency()
+        {
+            if(hrList != null)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        public int PushRotation()
+        {
+            throw new NotImplementedException();
         }
     }
 }

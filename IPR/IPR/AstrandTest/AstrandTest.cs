@@ -14,6 +14,7 @@ namespace IPR.AstrandTest
         private static int ROTATIONTARGET_MIN = 50;
         private static int ROTATIONTARGET_MAX = 60;
         private readonly IAstrandData data;
+        private readonly HistoricData historicData = new HistoricData();
 
         private static int WARMING_UP_TIME = 5; //Time in seconds 
         private static int MAIN_TEST_TIME = 5;
@@ -71,8 +72,7 @@ namespace IPR.AstrandTest
             sw.Start();
             while (sw.Elapsed.TotalSeconds < WARMING_UP_TIME)
             {
-                //dostuff
-                //testWindow.UpdateUI("I cant believe that this works");
+                
             }
             sw.Stop();
             Console.WriteLine("StopWatch stopped at: " + sw.Elapsed.TotalSeconds);

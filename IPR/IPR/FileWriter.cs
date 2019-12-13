@@ -10,15 +10,26 @@ namespace IPR
     class FileWriter
     {
 
-        string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        public void WriteToFile(string message)
+        string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ClientData";
+
+        
+        public void WriteToFile(string message, string clientID)
         {
 
-            string path = this.dir + @"\TestData.txt";
+            DateTime localTime = DateTime.Now;
+            if (!File.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            string path = this.dir + clientID;
 
             if (!File.Exists(path))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(path);
+
+                path = path + "-" + localTime.ToString();
+
                 using (StreamWriter sw = File.CreateText(path))
                 {
                     sw.WriteLine(message);
@@ -26,6 +37,7 @@ namespace IPR
             }
             else
             {
+                path = path + "-" + localTime.ToString();
                 using (StreamWriter sw = File.AppendText(path))
                 {
                     sw.WriteLine(message);

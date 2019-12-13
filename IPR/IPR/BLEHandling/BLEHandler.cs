@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IPR.AstrandTest;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace IPR.BLEHandling
     class BLEHandler
     {
         public BLEConnect bleConnection;
+        public RealTimeData realTimeData;
 
         public BLEHandler(BLEConnect bleConnection)
         {

@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using IPR.AstrandTest;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace IPR
     {
 
         private delegate void OneArgDelagate();
+        private RealTimeData realTimeData;
 
         public SeriesCollection seriesView { get; set; }
 
@@ -68,7 +70,7 @@ namespace IPR
             this.sex = sex;
 
 
-            this.at = new AstrandTest.AstrandTest(this);
+            this.at = new AstrandTest.AstrandTest(this, realTimeData);
             
         }
 

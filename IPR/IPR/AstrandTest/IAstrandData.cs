@@ -9,6 +9,6 @@ namespace IPR.AstrandTest
     interface IAstrandData
     {
         int GetHeartFrequency();
-        int PushRotation();
+        void Connect(IAstrandDataListener listener);
     }
 }

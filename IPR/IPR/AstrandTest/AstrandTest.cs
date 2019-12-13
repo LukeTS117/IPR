@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IPR.AstrandTest
 {
-    class AstrandTest
+    class AstrandTest : IAstrandDataListener
     {
         private AstrandTestPhase current_phase = AstrandTestPhase.INACTIVE;
         private static int ROTATIONTARGET_MIN = 50;
@@ -23,9 +23,10 @@ namespace IPR.AstrandTest
         private TestWindow testWindow;
 
 
-        public AstrandTest(object TestWindow)
+        public AstrandTest(object TestWindow, IAstrandData astrandData)
         {
             this.testWindow = TestWindow as TestWindow;
+            this.data = astrandData;
         }
 
         public void StartTest()
@@ -133,5 +134,9 @@ namespace IPR.AstrandTest
             
         }
 
+        public void OnDataAvailable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

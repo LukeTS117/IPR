@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AstrandTest\IAstrandDataListener.cs" />
+    <Compile Include="AstrandTest\RealTimeData.cs" />
+    <Compile Include="AstrandTest\SymData.cs" />
     <Compile Include="FileWriter.cs" />
     <Compile Include="Views\Connect.xaml.cs">
       <DependentUpon>Connect.xaml</DependentUpon>

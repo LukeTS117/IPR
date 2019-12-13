@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace IPR.AstrandTest
 {
-    class SymData
+    class SymData : IAstrandData
     {
+        IAstrandDataListener listener;
+
+        public int GetHeartFrequency()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Connect(IAstrandDataListener listener)
+        {
+            this.listener = listener;
+        }
     }
 }

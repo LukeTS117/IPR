@@ -36,6 +36,8 @@ namespace IPR.BLEHandling
                 {
                     int instanteousCadence = message[2];
                     Console.WriteLine("instantaneos cadence:" + instanteousCadence);
+
+                    
                 }
             }
         }

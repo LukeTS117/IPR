@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace IPR.AstrandTest
 {
-    class RealTimeData
+    class RealTimeData : IAstrandData
     {
+        IAstrandDataListener listener;
+
+
+        public int GetHeartFrequency()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Connect(IAstrandDataListener listener)
+        {
+            this.listener = listener;
+        }
     }
 }

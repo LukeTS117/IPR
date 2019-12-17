@@ -22,11 +22,29 @@ namespace IPR.AstrandTest
 
         private TestWindow testWindow;
 
+        private Stopwatch elapsedStopWatch = null;
+        private List<DataPoint> dataPoints;
 
+        private struct DataPoint
+        {
+            public ValueType valueType { get; set; }
+            public int value { get; set; }
+            public int elapsedTime { get; set; }
+
+            public DataPoint(ValueType valueType, int value, int elapsedTime)
+            {
+                this.valueType = valueType;
+                this.value = value;
+                this.elapsedTime = elapsedTime;
+            }
+        }
+
+        
         public AstrandTest(object TestWindow, IAstrandData astrandData)
         {
             this.testWindow = TestWindow as TestWindow;
             this.data = astrandData;
+            this.dataPoints = new List<DataPoint>();
         }
 
         public void StartTest()
@@ -134,9 +152,25 @@ namespace IPR.AstrandTest
             
         }
 
-        public void OnDataAvailable()
+        public void OnDataAvailable(ValueType valueType, int value)
         {
-            throw new NotImplementedException();
+            dataPoints.Add(new DataPoint(valueType, value, this.GetElapsedTime()));
+
+        }
+
+        public int GetElapsedTime()
+        {
+            int elapsedTime;
+
+            if(elapsedStopWatch != null)
+            {
+                
+                elapsedTime = (int)elapsedStopWatch.ElapsedMilliseconds;
+                elapsedStopWatch.Restart();
+                return elapsedTime;
+            }
+
+            return 0;
         }
     }
 }

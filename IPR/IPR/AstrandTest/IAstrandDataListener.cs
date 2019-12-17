@@ -8,6 +8,6 @@ namespace IPR.AstrandTest
 {
     interface IAstrandDataListener
     {
-        void OnDataAvailable();
+        void OnDataAvailable(BLEHandling.DataTypes hR);
     }
 }

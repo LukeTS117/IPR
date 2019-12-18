@@ -22,3 +22,4 @@ C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.exe
 C:\git\IPR\IPR\IPR\obj\Debug\IPR.pdb
+C:\git\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IPR.AstrandTest
 {
-    interface IAstrandDataListener
+    public interface IAstrandDataListener
     {
         void OnDataAvailable(DataTypes dataType, int value);
     }

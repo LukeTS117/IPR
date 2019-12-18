@@ -48,6 +48,7 @@ namespace IPR.AstrandTest
             this.data = astrandData;
             this.dataPoints = new List<DataPoint>();
             this.instantCadence = new List<int>();
+            this.data.Connect(this);
         }
 
         public void StartTest()
@@ -159,6 +160,7 @@ namespace IPR.AstrandTest
         public void OnDataAvailable(DataTypes dataType, int value)
         {
             dataPoints.Add(new DataPoint(dataType, value, this.GetElapsedTime()));
+            Console.WriteLine(dataType.ToString() + " " + value);
 
 
             if(dataType == DataTypes.IC)

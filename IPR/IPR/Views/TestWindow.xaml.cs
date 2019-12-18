@@ -1,4 +1,5 @@
 ﻿using IPR.AstrandTest;
+using IPR.BLEHandling;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
@@ -25,10 +26,9 @@ namespace IPR
     {
 
         private delegate void OneArgDelagate();
-        private RealTimeData realTimeData;
 
         public SeriesCollection seriesView { get; set; }
-
+        BLEHandler bLEHandler;
 
         public enum Sex
         {
@@ -44,13 +44,14 @@ namespace IPR
 
 
         AstrandTest.AstrandTest at = null;
+        
 
 
 
-        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex)
+        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex, BLEHandler bLEHandler)
         {
             InitializeComponent();
-
+            this.bLEHandler = bLEHandler;
 
             seriesView = new SeriesCollection
             {
@@ -68,9 +69,10 @@ namespace IPR
             this.weight = weight;
             this.ergoID = ergoID;
             this.sex = sex;
+            
 
 
-            this.at = new AstrandTest.AstrandTest(this, realTimeData);
+            this.at = new AstrandTest.AstrandTest(this, this.bLEHandler);
             
         }
 

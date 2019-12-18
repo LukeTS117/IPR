@@ -8,14 +8,14 @@ using IPR.BLEHandling;
 
 namespace IPR
 {
-    class BLEConnect
+    public class BLEConnect
     {
 
         public string ergoID;
         public BLE ergoBLE { get; set; }
         public BLE heartRateBLE { get; set; }
 
-        public BLEHandler bleHandler;
+        public BLEHandler bleHandler { get; set; }
 
         public BLEConnect(string ergoID)
         {

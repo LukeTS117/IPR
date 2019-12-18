@@ -10,14 +10,19 @@ namespace IPR.BLEHandling
 {
 
      
-    class BLEHandler
+    public class BLEHandler : IAstrandData
     {
         public BLEConnect bleConnection;
-        public RealTimeData realTimeData;
+        IAstrandDataListener listner;
 
         public BLEHandler(BLEConnect bleConnection)
         {
             this.bleConnection = bleConnection;
+        }
+
+        public void Connect(IAstrandDataListener listener)
+        {
+            this.listner = listener;
         }
 
         public void handleData(byte[] rawData)
@@ -25,7 +30,7 @@ namespace IPR.BLEHandling
             if(rawData[0] == 22)
             {
                 int heartRate = rawData[1];
-                Console.WriteLine("Heartrat: " + heartRate);
+                listner.OnDataAvailable(DataTypes.HR, heartRate);
 
             }
             else if(rawData[0] == 164)
@@ -37,9 +42,7 @@ namespace IPR.BLEHandling
                 if(pageNumber == 25)
                 {
                     int instanteousCadence = message[2];
-                    Console.WriteLine("instantaneos cadence:" + instanteousCadence);
-
-                    
+                    listner.OnDataAvailable(DataTypes.IC, instanteousCadence);                                       
                 }
             }
         }

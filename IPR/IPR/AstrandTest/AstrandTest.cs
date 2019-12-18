@@ -1,4 +1,5 @@
 ﻿
+using IPR.BLEHandling;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,13 +28,13 @@ namespace IPR.AstrandTest
 
         private struct DataPoint
         {
-            public ValueType valueType { get; set; }
+            public DataTypes dataType { get; set; }
             public int value { get; set; }
             public int elapsedTime { get; set; }
 
-            public DataPoint(ValueType valueType, int value, int elapsedTime)
+            public DataPoint(DataTypes dataType, int value, int elapsedTime)
             {
-                this.valueType = valueType;
+                this.dataType = dataType;
                 this.value = value;
                 this.elapsedTime = elapsedTime;
             }
@@ -59,7 +60,7 @@ namespace IPR.AstrandTest
             else if (phase == AstrandTestPhase.COOLING_DOWN) { this.CoolingDown(); }
 
             else if (phase == AstrandTestPhase.EXTENDED_TEST) { this.ExtendedTest(); }
-            else if (phase == AstrandTestPhase.EXTENDED_TEST) { this.InActive(); }
+            else if (phase == AstrandTestPhase.INACTIVE) { this.InActive(); }
 
             current_phase = phase;
         }
@@ -152,9 +153,9 @@ namespace IPR.AstrandTest
             
         }
 
-        public void OnDataAvailable(ValueType valueType, int value)
+        public void OnDataAvailable(DataTypes dataType, int value)
         {
-            dataPoints.Add(new DataPoint(valueType, value, this.GetElapsedTime()));
+            dataPoints.Add(new DataPoint(dataType, value, this.GetElapsedTime()));
 
         }
 

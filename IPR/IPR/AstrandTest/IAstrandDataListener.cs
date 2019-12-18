@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IPR.BLEHandling;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace IPR.AstrandTest
 {
     interface IAstrandDataListener
     {
-        void OnDataAvailable(BLEHandling.DataTypes hR);
+        void OnDataAvailable(DataTypes dataType, int value);
     }
 }

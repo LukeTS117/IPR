@@ -25,6 +25,7 @@ namespace IPR.AstrandTest
 
         private Stopwatch elapsedStopWatch = null;
         private List<DataPoint> dataPoints;
+        private List<int> instantCadence;
 
         private struct DataPoint
         {
@@ -46,6 +47,7 @@ namespace IPR.AstrandTest
             this.testWindow = TestWindow as TestWindow;
             this.data = astrandData;
             this.dataPoints = new List<DataPoint>();
+            this.instantCadence = new List<int>();
         }
 
         public void StartTest()
@@ -103,6 +105,7 @@ namespace IPR.AstrandTest
 
         private void MainTest()
         {
+            instantCadence = new List<int>();
             Stopwatch sw = new Stopwatch();
             sw.Start();
             while (sw.Elapsed.TotalSeconds < MAIN_TEST_TIME)
@@ -156,6 +159,12 @@ namespace IPR.AstrandTest
         public void OnDataAvailable(DataTypes dataType, int value)
         {
             dataPoints.Add(new DataPoint(dataType, value, this.GetElapsedTime()));
+
+
+            if(dataType == DataTypes.IC)
+            {
+                instantCadence.Add(value);
+            }
 
         }
 

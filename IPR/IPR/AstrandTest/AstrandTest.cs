@@ -115,6 +115,16 @@ namespace IPR.AstrandTest
             }
             sw.Stop();
             Console.WriteLine("StopWatch stopped at: " + sw.Elapsed.TotalSeconds);
+
+
+            Console.WriteLine("Instant Cadence Results: ");
+            foreach(int ic in instantCadence)
+            {
+                Console.WriteLine(ic);
+            }
+            Console.WriteLine("---------------");
+
+
             Console.WriteLine("Main Test completed, moving on to Cooling Down");
             ChangePhase(AstrandTestPhase.COOLING_DOWN);
         }
@@ -166,6 +176,7 @@ namespace IPR.AstrandTest
             if(dataType == DataTypes.IC)
             {
                 instantCadence.Add(value);
+                SetRotation(value);
             }
 
         }
@@ -176,7 +187,6 @@ namespace IPR.AstrandTest
 
             if(elapsedStopWatch != null)
             {
-                
                 elapsedTime = (int)elapsedStopWatch.ElapsedMilliseconds;
                 elapsedStopWatch.Restart();
                 return elapsedTime;

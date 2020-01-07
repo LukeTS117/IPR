@@ -7,62 +7,87 @@ using System.Threading.Tasks;
 
 namespace IPR
 {
-    class FileWriter
+    class FileManager
     {
 
-        string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ClientData";
+        string dir { get; set; }
 
-        
-        public void WriteToFile(string message, string clientID)
+        public FileManager()
         {
-            if (!File.Exists(dir))
+            dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ClientData";
+        }
+
+        public void createDir(string clientID)
+        {
+            if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
 
-            string path = this.dir + @"\" + clientID;
-
-            if (!File.Exists(path))
+            if (!Directory.Exists(dir + @"\" + clientID))
             {
-                Directory.CreateDirectory(path);
-
-                using (StreamWriter sw = File.CreateText(path + @"\Testdata2.txt"))
-                {
-                    sw.WriteLine(message);
-                }
+                Directory.CreateDirectory(dir + @"\" + clientID);
             }
-            else
+
+        }
+
+        public List<string> selectDir()
+        {
+            string[] directories = Directory.GetDirectories(dir);
+            List<string> nameDirs = new List<string>();
+
+            foreach (string directorie in directories)
             {
-                using (StreamWriter sw = File.AppendText(path + @"\Testdata2.txt"))
-                {
-                    sw.WriteLine(message);
-                }
+                nameDirs.Add(directorie.Replace(dir + @"\", ""));
+            }
+
+            return nameDirs;
+        }
+
+        public List<string> selectFile(string chosenDir)
+        {
+            string[] files = Directory.GetFiles(dir + @"\" + chosenDir);
+            List<string> nameFiles = new List<string>();
+
+            foreach (string file in files)
+            {
+                nameFiles.Add(file);
+            }
+
+            return nameFiles;
+        }
+
+
+        public void WriteToFile(string message, string chosenDir)
+        {
+            using (StreamWriter sr = File.AppendText(chosenDir))
+            {
+                sr.WriteLine(message);
+                sr.Close();
             }
         }
 
-        public string ReadFile()
+        public void creatFile(string chosenDir)
         {
+            File.Create(dir + @"\" + chosenDir + @"\" + DateTime.Now.ToString());
+        }
 
-            string path = this.dir + @"\TestData.txt";
+
+        public string ReadFile(string chosenDir, string chosenFile)
+        {
+            string dir = this.dir + @"\" + chosenDir + @"\" + chosenFile;
+            string s;
             string packet = "";
-
-            if (File.Exists(path))
+            using (StreamReader sr = File.OpenText(dir))
             {
-                using (StreamReader sr = File.OpenText(path))
+                s = sr.ReadLine();
+                while (s != null)
                 {
-                    while (sr.ReadLine() != null)
-                    {
-                        packet += sr.ReadLine();
-                    }
-                    return packet;
+                    s = sr.ReadLine();
+                    packet = packet + s + "-";
                 }
+                return packet;
             }
-            else
-            {
-                Console.WriteLine("This file does not exist");
-                return "";
-            }
-
 
         }
     }

@@ -10,8 +10,10 @@
       Title="TestWindow" >
 
     <Grid Background="White">
-        <lvc:CartesianChart Series= "{Binding seriesView}" LegendLocation="Right" Margin="259,85,20,94.6">
-            
-        </lvc:CartesianChart>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="273*"/>
+            <ColumnDefinition Width="127*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="chartGrid" RenderTransformOrigin="1.143,0.26" Margin="312,10,0,131" Grid.ColumnSpan="2"/>
     </Grid>
 </Page>

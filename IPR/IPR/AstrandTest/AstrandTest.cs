@@ -41,7 +41,7 @@ namespace IPR.AstrandTest
         private Timer intervalTimer;
         private AstrandTestPhase nextPhase;
         bool testStarted = false;
-        private FileWriter fileWriter;
+        private FileManager fileManager;
         bool steadyStateTestSuccesfull = false;
 
         private List<int> steadyHeartFrequency;
@@ -83,7 +83,6 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.data.Connect(this);
-            fileWriter = new FileWriter();
             this.heartFrequency = new List<int>();
 
             this.age = age;
@@ -351,7 +350,7 @@ namespace IPR.AstrandTest
 
 
                 dataPoints.Add(dataPoint);
-                fileWriter.WriteToFile(dataPoint.ToString(), testWindow.patientID.ToString());
+                
                 Console.WriteLine(dataType.ToString() + " " + value);
 
 
@@ -364,6 +363,7 @@ namespace IPR.AstrandTest
                 if (dataType == DataTypes.HR)
                 {
                     heartFrequency.Add(value);
+                    this.testWindow.UpdateUI(value);
                 }
             }
 

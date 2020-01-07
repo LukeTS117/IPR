@@ -1,6 +1,7 @@
 ﻿using IPR.AstrandTest;
 using IPR.BLEHandling;
 using LiveCharts;
+using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,11 @@ namespace IPR
     {
 
         private delegate void OneArgDelagate();
+        public ChartValues<ObservableValue> observableValues { get; set; }
+        
 
-        public SeriesCollection seriesView { get; set; }
+
+        
         BLEHandler bLEHandler;
 
         public enum Sex
@@ -53,14 +57,20 @@ namespace IPR
             InitializeComponent();
             this.bLEHandler = bLEHandler;
 
-            seriesView = new SeriesCollection
+            CartesianChart ch = new CartesianChart();
+            observableValues = new ChartValues<ObservableValue>();
+
+            ch.Series = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> { 4, 6, 5, 2 ,4 }
+                    Title = "HeartRate",
+                    Values = observableValues
                 }
             };
+
+
+            chartGrid.Children.Add(ch);
 
             DataContext = this;
 
@@ -86,9 +96,9 @@ namespace IPR
             fetcher.BeginInvoke(null, null);
         }
 
-        public void UpdateUI(string data)
+        public void UpdateUI(int data)
         {
-
+            observableValues.Add(new ObservableValue(data));
         }
     }
 }

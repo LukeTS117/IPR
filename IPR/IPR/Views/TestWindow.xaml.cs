@@ -69,10 +69,14 @@ namespace IPR
             this.weight = weight;
             this.ergoID = ergoID;
             this.sex = sex;
-            
 
+            bool isMale = false;
+            if(this.sex == Sex.Male)
+            {
+                isMale = true;
+            }
 
-            this.at = new AstrandTest.AstrandTest(this, this.bLEHandler);
+            this.at = new AstrandTest.AstrandTest(this, this.bLEHandler, age, weight, isMale);
             
         }
 

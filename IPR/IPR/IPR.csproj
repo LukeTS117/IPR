@@ -69,7 +69,7 @@
     <Compile Include="AstrandTest\IAstrandDataListener.cs" />
     <Compile Include="AstrandTest\SymData.cs" />
     <Compile Include="DataTypes.cs" />
-    <Compile Include="FileWriter.cs" />
+    <Compile Include="FileManager.cs" />
     <Compile Include="Views\Connect.xaml.cs">
       <DependentUpon>Connect.xaml</DependentUpon>
     </Compile>

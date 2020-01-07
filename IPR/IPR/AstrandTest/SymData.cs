@@ -10,14 +10,11 @@ namespace IPR.AstrandTest
     {
         IAstrandDataListener listener;
 
-        public int GetHeartFrequency()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Connect(IAstrandDataListener listener)
         {
             this.listener = listener;
         }
+
+
     }
 }

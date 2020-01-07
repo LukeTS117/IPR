@@ -30,6 +30,7 @@ namespace IPR.AstrandTest
         private Timer myTimer;
         private AstrandTestPhase nextPhase;
         bool testStarted = false;
+        private FileWriter fileWriter;
 
         private struct DataPoint
         {
@@ -43,6 +44,12 @@ namespace IPR.AstrandTest
                 this.value = value;
                 this.elapsedTime = elapsedTime;
             }
+
+           
+            public override string ToString()
+            {
+                return "<" + dataType.ToString() + ">" + value + "<ET>" + elapsedTime;
+            }
         }
 
         
@@ -53,6 +60,7 @@ namespace IPR.AstrandTest
             this.dataPoints = new List<DataPoint>();
             this.instantCadence = new List<int>();
             this.data.Connect(this);
+            fileWriter = new FileWriter();
 
 
         }
@@ -77,6 +85,9 @@ namespace IPR.AstrandTest
 
         public void SetRotation(int rotation)
         {
+
+            instantCadence.Add(rotation);
+
             if(rotation < ROTATIONTARGET_MIN)
             {
                 Console.WriteLine("GO FASTER!");
@@ -107,20 +118,20 @@ namespace IPR.AstrandTest
             SetTimer(MAIN_TEST_TIME, AstrandTestPhase.COOLING_DOWN);
 
 
-            Console.WriteLine("Instant Cadence Results: ");
-            foreach(int ic in instantCadence)
-            {
-                Console.WriteLine(ic);
-            }
-            Console.WriteLine("---------------");
-
-
-            Console.WriteLine("Main Test completed, moving on to Cooling Down");
+           
             
         }
 
         private void CoolingDown()
         {
+            Console.WriteLine("Main Test completed, moving on to Cooling Down");
+            Console.WriteLine("Instant Cadence Results: ");
+            foreach (int ic in instantCadence)
+            {
+                Console.WriteLine(ic);
+            }
+            Console.WriteLine("---------------");
+
             SetTimer(COOLING_DOWN_TIME, AstrandTestPhase.INACTIVE);
            
             Console.WriteLine("Cooling Down completed, deactivating test");
@@ -157,13 +168,16 @@ namespace IPR.AstrandTest
 
         public void OnDataAvailable(DataTypes dataType, int value)
         {
+            DataPoint dataPoint = new DataPoint(dataType, value, this.GetElapsedTime());
+
             if (!testStarted)
             {
                 StartTest();
             }
 
 
-            dataPoints.Add(new DataPoint(dataType, value, this.GetElapsedTime()));
+            dataPoints.Add(dataPoint);
+            fileWriter.WriteToFile(dataPoint.ToString(), testWindow.patientID.ToString());
             Console.WriteLine(dataType.ToString() + " " + value);
 
 

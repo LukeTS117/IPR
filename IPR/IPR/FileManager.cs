@@ -15,30 +15,25 @@ namespace IPR
         
         public void WriteToFile(string message, string clientID)
         {
-
-            DateTime localTime = DateTime.Now;
             if (!File.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
 
-            string path = this.dir + clientID;
+            string path = this.dir + @"\" + clientID;
 
             if (!File.Exists(path))
             {
                 Directory.CreateDirectory(path);
 
-                path = path + "-" + localTime.ToString();
-
-                using (StreamWriter sw = File.CreateText(path))
+                using (StreamWriter sw = File.CreateText(path + @"\Testdata2.txt"))
                 {
                     sw.WriteLine(message);
                 }
             }
             else
             {
-                path = path + "-" + localTime.ToString();
-                using (StreamWriter sw = File.AppendText(path))
+                using (StreamWriter sw = File.AppendText(path + @"\Testdata2.txt"))
                 {
                     sw.WriteLine(message);
                 }

@@ -36,11 +36,11 @@ namespace IPR
         }
 
         
-        private int patientID;
-        private int age;
-        private int weight;
-        private int ergoID;
-        private Sex sex;
+        public int patientID { get; set; }
+        private int age { get; set; }
+        private int weight { get; set; }
+        private int ergoID { get; set; }
+        private Sex sex { get; set; }
 
 
         AstrandTest.AstrandTest at = null;

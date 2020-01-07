@@ -41,6 +41,7 @@ namespace IPR.AstrandTest
         private Timer intervalTimer;
         private AstrandTestPhase nextPhase;
         bool testStarted = false;
+        private FileWriter fileWriter;
         bool steadyStateTestSuccesfull = false;
 
         private List<int> steadyHeartFrequency;
@@ -64,6 +65,12 @@ namespace IPR.AstrandTest
                 this.value = value;
                 this.elapsedTime = elapsedTime;
             }
+
+           
+            public override string ToString()
+            {
+                return "<" + dataType.ToString() + ">" + value + "<ET>" + elapsedTime;
+            }
         }
 
         
@@ -76,6 +83,7 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.data.Connect(this);
+            fileWriter = new FileWriter();
             this.heartFrequency = new List<int>();
 
             this.age = age;
@@ -102,7 +110,12 @@ namespace IPR.AstrandTest
             current_phase = phase;
         }
 
-       
+        public void SetRotation(int rotation)
+        {
+            if(rotation < ROTATIONTARGET_MIN)
+            {
+                Console.WriteLine("GO FASTER!");
+            }
 
 
 
@@ -336,13 +349,16 @@ namespace IPR.AstrandTest
 
         public void OnDataAvailable(DataTypes dataType, int value)
         {
+            DataPoint dataPoint = new DataPoint(dataType, value, this.GetElapsedTime());
+
             if (!testStarted)
             {
                 StartTest();
             }
 
 
-            dataPoints.Add(new DataPoint(dataType, value, this.GetElapsedTime()));
+            dataPoints.Add(dataPoint);
+            fileWriter.WriteToFile(dataPoint.ToString(), testWindow.patientID.ToString());
             Console.WriteLine(dataType.ToString() + " " + value);
 
 

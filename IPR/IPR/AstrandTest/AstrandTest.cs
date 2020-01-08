@@ -98,6 +98,7 @@ namespace IPR.AstrandTest
         public void StartTest()
         {
             this.testStarted = true;
+            data.SetResistance(0);
             ChangePhase(AstrandTestPhase.WARMING_UP);
         }
 
@@ -391,7 +392,7 @@ namespace IPR.AstrandTest
                 {
                     heartFrequency.Add(value);
                     testWindow.SetText(testWindow.text_HeartRate, value.ToString());
-                if (value < HR_MIN && (current_phase != AstrandTestPhase.COOLING_DOWN || current_phase != AstrandTestPhase.INACTIVE))
+                if (value < (HR_MIN+10) && (current_phase != AstrandTestPhase.COOLING_DOWN || current_phase != AstrandTestPhase.INACTIVE))
                 {
                     IncreaseResistance();
                     
@@ -435,6 +436,7 @@ namespace IPR.AstrandTest
                 }
                 resistanceUpdate = false;
                 data.SetResistance(resPercentage);
+                testWindow.SetText(testWindow.text_Resistance, resPercentage.ToString());
             }
             }
 
@@ -467,7 +469,7 @@ namespace IPR.AstrandTest
                 }
                 else
                 {
-                testWindow.SetUIRotation(null, rotation);
+                testWindow.SetUIRotation("Keep Pace", rotation);
                 }
             }
 

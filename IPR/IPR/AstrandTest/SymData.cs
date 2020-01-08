@@ -15,6 +15,9 @@ namespace IPR.AstrandTest
             this.listener = listener;
         }
 
-
+        public void SetResistance(int percentage)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

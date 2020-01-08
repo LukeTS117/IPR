@@ -19,6 +19,7 @@ namespace IPR.AstrandTest
         private static int HR_MIN = 130;
         private static int STEADYSTATE_INTERVAL = 60;
         private static int STEADYSTATE_TIME = 120;
+        private static int CHANGE_RESISTANCE_INTERVAL = 5;
         private readonly IAstrandData data;
 
         private static double WORKLOAD_CONSTANT = 6.11829727786744;
@@ -43,6 +44,7 @@ namespace IPR.AstrandTest
         bool testStarted = false;
         private FileManager fileManager;
         bool steadyStateTestSuccesfull = false;
+        bool resistanceUpdate = false;
 
         private List<int> steadyHeartFrequency;
         private List<int> steadyIC;
@@ -129,12 +131,9 @@ namespace IPR.AstrandTest
                 this.instantCadence = new List<int>();
                 this.steadyHeartFrequency = new List<int>();
                 this.steadyIC = new List<int>();
-
+                ResistanceIntervalTimer();
 
                 StartSteadyStateTimer(STEADYSTATE_TIME, STEADYSTATE_INTERVAL);
-
-                
-
             }
 
             private void CoolingDown()
@@ -252,17 +251,29 @@ namespace IPR.AstrandTest
                 myTimer.Start();
             }
 
-
-
-
             private void OnTimedEvent_ChangePhase(Object source, ElapsedEventArgs e)
             {
                 ChangePhase(nextPhase);
             }
 
+        
+
             // // // // // // // // // // // // // // // // // // // // // // // //
             // // // // // // // // // // // // // // // // // // // // // // // //
 
+            private void ResistanceIntervalTimer()
+            {
+                Timer intervalTimer = new Timer(CHANGE_RESISTANCE_INTERVAL * 1000);
+                intervalTimer.Elapsed += OnTimedEvent_Resistance;
+                intervalTimer.Enabled = true;
+                intervalTimer.Start();
+            }
+
+            private void OnTimedEvent_Resistance(Object sender, EventArgs e)
+            {
+                resistanceUpdate = true;
+                ResistanceIntervalTimer();
+            }
 
             private double CalculateVO2Max()
             {
@@ -380,7 +391,16 @@ namespace IPR.AstrandTest
                 {
                     heartFrequency.Add(value);
                     testWindow.SetText(testWindow.text_HeartRate, value.ToString());
-                    this.testWindow.UpdateUI(value);
+                if (value < HR_MIN && (current_phase != AstrandTestPhase.COOLING_DOWN || current_phase != AstrandTestPhase.INACTIVE))
+                {
+                    IncreaseResistance();
+                    
+                }
+                if (current_phase == AstrandTestPhase.COOLING_DOWN )
+                {
+                    DecreaseResistance();
+                }
+                this.testWindow.UpdateUI(value);
                 }
             }
 
@@ -406,24 +426,30 @@ namespace IPR.AstrandTest
 
             public void IncreaseResistance()
             {
+            if (resistanceUpdate == true)
+            {
                 resPercentage += 5;
-                if(resPercentage > 100)
+                if (resPercentage > 100)
                 {
                     resPercentage = 100;
-                }    
-
+                }
+                resistanceUpdate = false;
                 data.SetResistance(resPercentage);
+            }
             }
 
             public void DecreaseResistance()
+            {
+            if (resistanceUpdate == true)
             {
                 resPercentage -= 5;
                 if (resPercentage < 0)
                 {
                     resPercentage = 0;
                 }
-
+                resistanceUpdate = false;
                 data.SetResistance(resPercentage);
+            }
             }
 
             public void SetRotation(int rotation)

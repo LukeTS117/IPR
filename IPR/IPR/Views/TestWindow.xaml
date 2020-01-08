@@ -45,7 +45,7 @@
                 <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
             </TextBlock.Effect>
         </TextBlock>
-        <Button Content="Start" HorizontalAlignment="Left" Margin="292,55,0,0" VerticalAlignment="Top" Width="131" Height="59" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Click="Button_StartTest_Click"/>
+        <Button Content="Start" HorizontalAlignment="Left" Margin="292,55,0,0" VerticalAlignment="Top" Width="87" Height="59" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Click="Button_StartTest_Click"/>
         <TextBlock Margin="39,420,415.8,0" TextWrapping="Wrap" Text="Heartrate:" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
@@ -113,6 +113,7 @@
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="391,55,0,0" VerticalAlignment="Top" Width="87" Height="59" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Click="Button_Connect_Click"/>
 
     </Grid>
 </Page>

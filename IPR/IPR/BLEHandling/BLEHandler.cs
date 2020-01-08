@@ -48,7 +48,10 @@ namespace IPR.BLEHandling
         }
 
   
-
+        public void RetryConnection()
+        {
+            bleConnection.Connect();
+        }
         public void SetResistance(int percentage)
         {
             bleConnection.SetResistance(percentage);

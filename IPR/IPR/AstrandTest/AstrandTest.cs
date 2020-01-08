@@ -17,7 +17,7 @@ namespace IPR.AstrandTest
         private static int ROTATIONTARGET_MAX = 60;
         private static int HR_MAX_DIFFERENCE = 5;
         private static int HR_MIN = 130;
-        private static int STEADYSTATE_INTERVAL = 60;
+        private static int STEADYSTATE_INTERVAL = 10;
         private static int STEADYSTATE_TIME = 120;
         private static int CHANGE_RESISTANCE_INTERVAL = 5;
         private readonly IAstrandData data;
@@ -44,7 +44,7 @@ namespace IPR.AstrandTest
         bool testStarted = false;
         private FileManager fileManager;
         bool steadyStateTestSuccesfull = false;
-        bool resistanceUpdate = false;
+        bool resistanceUpdate = true;
 
         private List<int> steadyHeartFrequency;
         private List<int> steadyIC;
@@ -87,7 +87,10 @@ namespace IPR.AstrandTest
             this.heartFrequency = new List<int>();
             this.data.Connect(this);
             this.heartFrequency = new List<int>();
-            
+
+            this.intervalTimer = new Timer(STEADYSTATE_INTERVAL * 1000);
+            this.steadyStateTimer = new Timer(1 * 1000);
+
 
             this.age = age;
             this.weight = weight;
@@ -123,6 +126,7 @@ namespace IPR.AstrandTest
             private void WarmingUp()
             {
                 SetTimer(WARMING_UP_TIME, AstrandTestPhase.MAIN_TEST);
+                ResistanceIntervalTimer();
             }
 
             private void MainTest()
@@ -131,8 +135,7 @@ namespace IPR.AstrandTest
                 this.instantCadence = new List<int>();
                 this.steadyHeartFrequency = new List<int>();
                 this.steadyIC = new List<int>();
-                ResistanceIntervalTimer();
-
+               
                 StartSteadyStateTimer(STEADYSTATE_TIME, STEADYSTATE_INTERVAL);
             }
 
@@ -178,6 +181,9 @@ namespace IPR.AstrandTest
 
             private void StartSteadyStateTimer(int seconds, int interval)
             {
+                intervalTimer.Dispose();
+                steadyStateTimer.Dispose();
+
                 STEADYSTATE_INTERVAL = interval;
                 steadyStateTimer = new Timer(seconds * 1000);
                 steadyStateTimer.Elapsed += OnTimedEvent_SteadyStateTestFinished;
@@ -190,6 +196,7 @@ namespace IPR.AstrandTest
                 intervalTimer.Start();
             }
 
+
             private void OnTimedEvent_CheckHeartRate(Object source, ElapsedEventArgs e)
             {
                 int hr = heartFrequency.Last();
@@ -197,7 +204,7 @@ namespace IPR.AstrandTest
                 if (hr < HR_MIN)
                 {
                     Console.WriteLine("Heartrate to low to continue");
-                    IncreaseResistance();
+                    
                     ExitSteadyStateTest();
                     return;
                 }
@@ -222,6 +229,8 @@ namespace IPR.AstrandTest
             public void ExitSteadyStateTest()
             {
                 steadyHeartFrequency.Clear();
+                steadyStateTimer.Dispose();
+                steadyStateTimer.Close();
             }
 
             private void OnTimedEvent_SteadyStateTestFinished(Object source, ElapsedEventArgs e)
@@ -263,7 +272,7 @@ namespace IPR.AstrandTest
 
             private void ResistanceIntervalTimer()
             {
-                Timer intervalTimer = new Timer(CHANGE_RESISTANCE_INTERVAL * 1000);
+                intervalTimer = new Timer(CHANGE_RESISTANCE_INTERVAL * 1000);
                 intervalTimer.Elapsed += OnTimedEvent_Resistance;
                 intervalTimer.Enabled = true;
                 intervalTimer.Start();
@@ -272,6 +281,7 @@ namespace IPR.AstrandTest
             private void OnTimedEvent_Resistance(Object sender, EventArgs e)
             {
                 resistanceUpdate = true;
+                intervalTimer.Dispose();
                 ResistanceIntervalTimer();
             }
 
@@ -391,7 +401,7 @@ namespace IPR.AstrandTest
                 {
                     heartFrequency.Add(value);
                     testWindow.SetText(testWindow.text_HeartRate, value.ToString());
-                if (value < HR_MIN && (current_phase != AstrandTestPhase.COOLING_DOWN || current_phase != AstrandTestPhase.INACTIVE))
+                if (value < HR_MIN)
                 {
                     IncreaseResistance();
                     
@@ -435,6 +445,7 @@ namespace IPR.AstrandTest
                 }
                 resistanceUpdate = false;
                 data.SetResistance(resPercentage);
+                testWindow.SetText(testWindow.text_Resistance, this.resPercentage.ToString());
             }
             }
 
@@ -449,6 +460,7 @@ namespace IPR.AstrandTest
                 }
                 resistanceUpdate = false;
                 data.SetResistance(resPercentage);
+                testWindow.SetText(testWindow.text_Resistance, this.resPercentage.ToString());
             }
             }
 
@@ -467,7 +479,7 @@ namespace IPR.AstrandTest
                 }
                 else
                 {
-                testWindow.SetUIRotation(null, rotation);
+                testWindow.SetUIRotation("Keep Pace" , rotation);
                 }
             }
 

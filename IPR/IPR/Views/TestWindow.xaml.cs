@@ -119,6 +119,10 @@ namespace IPR
             OneArgDelagate fetcher = new OneArgDelagate(at.StartTest);
             fetcher.BeginInvoke(null, null);
         }
+        private void Button_Connect_Click(object Sender, RoutedEventArgs e)
+        {
+            bLEHandler.RetryConnection();
+        }
 
         public void UpdateUI(int data)
         {
@@ -163,6 +167,7 @@ namespace IPR
             SetText(text_TimeLeft, string.Format("{0:00}:{1:00}",minutes, seconds));
         }
 
+         
 
         public void SetText(TextBlock tb, string text)
         {

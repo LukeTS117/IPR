@@ -15,6 +15,8 @@ namespace IPR
         public BLE ergoBLE { get; set; }
         public BLE heartRateBLE { get; set; }
 
+        public bool connected = false;
+
         public BLEHandler bleHandler { get; set; }
 
         public BLEConnect(string ergoID)
@@ -25,9 +27,10 @@ namespace IPR
             bleHandler = new BLEHandler(this);
         }
 
-        public void Connect()
+        public bool Connect()
         {
             this.connectToBLE(this.ergoBLE, this.heartRateBLE, this.ergoID);
+            return connected;
         }
 
         private async void connectToBLE(BLE ergoBLE, BLE heartRateBLE, string ergoID)
@@ -36,8 +39,8 @@ namespace IPR
             int errorCodeErgo = await ergoBLE.OpenDevice($"Tacx Flux {ergoID}");
             int errorCodeHeartRate = await heartRateBLE.OpenDevice("Decathlon Dual HR");
 
-            PrintDevices(ergoBLE);
-            PrintDevices(heartRateBLE);
+            //PrintDevices(ergoBLE);
+           // PrintDevices(heartRateBLE);
 
             // Set services
             string service1 = "6e40fec1-b5a3-f393-e0a9-e50e24dcca9e";
@@ -52,6 +55,11 @@ namespace IPR
             errorCodeHeartRate = await heartRateBLE.SubscribeToCharacteristic("HeartRateMeasurement");
 
             Console.WriteLine($"Error code ergo:{errorCodeErgo} \nError code heartRate: {errorCodeHeartRate}");
+
+            if(errorCodeErgo == 0 && errorCodeHeartRate == 0)
+            {
+                connected = true;
+            }
 
         }
 

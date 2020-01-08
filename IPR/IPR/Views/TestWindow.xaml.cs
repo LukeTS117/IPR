@@ -131,10 +131,7 @@ namespace IPR
             {
                 SetText(text_Instruction, instruction);
             }
-            if (instruction == null && (text_Instruction.Text == "SLOW DOWN!" || text_Instruction.Text == "GO FASTER!")) 
-            {
-                SetText(text_Instruction, "Keep Pace");
-            }
+            
             SetText(text_Cadence, rotation.ToString());
         }
 

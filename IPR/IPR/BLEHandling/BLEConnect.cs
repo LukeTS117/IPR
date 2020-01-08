@@ -70,9 +70,23 @@ namespace IPR
             bleHandler.handleData(e.Data);
         }
 
-        public void SetResistance(int res)
+        public async void SetResistance(int percentage)
         {
-            throw new NotImplementedException();
+            string service3 = "6e40fec3-b5a3-f393-e0a9-e50e24dcca9e";
+            byte[] resistance = { 0xA4, 0x09, 0x4E, 0x05, 0x30, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, (byte)(percentage * 2), 0 };
+            byte checksum = GetXorValue(resistance);
+            resistance[resistance.Length - 1] = checksum;
+            await ergoBLE.WriteCharacteristic(service3, resistance);
+        }
+
+        public byte GetXorValue(byte[] data)
+        {
+            byte xorValue = 0;
+            for(int i = 0; i < data.Length - 1; i++)
+            {
+                xorValue ^= data[i];
+            }
+            return xorValue;
         }
 
 

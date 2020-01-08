@@ -42,18 +42,17 @@ namespace IPR.BLEHandling
                 if(pageNumber == 25)
                 {
                     int instanteousCadence = message[2];
-                    listner.OnDataAvailable(DataTypes.IC, instanteousCadence);                                       
+                    listner.OnDataAvailable(DataTypes.IC, instanteousCadence);  
                 }
             }
         }
 
-        public void ChangeResistance(int res)
+  
+
+        public void SetResistance(int percentage)
         {
-            bleConnection.SetResistance(res);
+            bleConnection.SetResistance(percentage);
         }
-
-
-        
     }
 
 }

@@ -9,5 +9,6 @@ namespace IPR.AstrandTest
     interface IAstrandData
     {
         void Connect(IAstrandDataListener listener);
+        void SetResistance(int percentage);
     }
 }

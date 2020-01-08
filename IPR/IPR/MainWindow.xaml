@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IPR"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1080" ResizeMode="NoResize">
+        WindowStyle="ToolWindow" 
+        
+        Title="VO2MaxCalculator3000" Height="720" Width="1080" ResizeMode="NoResize">
+        
     <Grid>
         <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="720" Margin="0" VerticalAlignment="Bottom" Width="1080" NavigationUIVisibility="Hidden"/>
        

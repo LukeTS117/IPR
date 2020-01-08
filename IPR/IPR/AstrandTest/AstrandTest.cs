@@ -17,16 +17,16 @@ namespace IPR.AstrandTest
         private static int ROTATIONTARGET_MAX = 60;
         private static int HR_MAX_DIFFERENCE = 5;
         private static int HR_MIN = 130;
-        private static int STEADYSTATE_INTERVAL = 15;
+        private static int STEADYSTATE_INTERVAL = 60;
         private static int STEADYSTATE_TIME = 120;
         private readonly IAstrandData data;
 
         private static double WORKLOAD_CONSTANT = 6.11829727786744;
 
         private static int WARMING_UP_TIME = 5; //Time in seconds 
-        private static int MAIN_TEST_TIME = 20;
+        private static int MAIN_TEST_TIME = 10;
         private static int COOLING_DOWN_TIME = 5;
-        //private static int EXTENDED_TEST_TIME = 5;
+       
 
         private TestWindow testWindow;
 
@@ -99,14 +99,15 @@ namespace IPR.AstrandTest
 
         private void ChangePhase(AstrandTestPhase phase)
         {
-            if (phase == AstrandTestPhase.WARMING_UP) { this.WarmingUp(); }
-            else if (phase == AstrandTestPhase.MAIN_TEST) { this.MainTest(); }
-            else if (phase == AstrandTestPhase.COOLING_DOWN) { this.CoolingDown(); }
+            if (phase == AstrandTestPhase.WARMING_UP) { this.WarmingUp(); testWindow.SetText(testWindow.text_Phase, "Warming Up"); }
+            else if (phase == AstrandTestPhase.MAIN_TEST) { this.MainTest(); testWindow.SetText(testWindow.text_Phase, "Main Test"); }
+            else if (phase == AstrandTestPhase.COOLING_DOWN) { this.CoolingDown(); testWindow.SetText(testWindow.text_Phase, "Cooling Down"); }
 
-            else if (phase == AstrandTestPhase.EXTENDED_TEST) { this.ExtendedTest(); }
-            else if (phase == AstrandTestPhase.INACTIVE) { this.InActive(); }
+           
+            else if (phase == AstrandTestPhase.INACTIVE) { this.InActive(); testWindow.SetText(testWindow.text_Phase, "Inactive"); }
 
             current_phase = phase;
+           
         }
 
         
@@ -122,6 +123,7 @@ namespace IPR.AstrandTest
 
             private void MainTest()
             {
+                SetTimer(MAIN_TEST_TIME, AstrandTestPhase.COOLING_DOWN);
                 this.instantCadence = new List<int>();
                 this.steadyHeartFrequency = new List<int>();
                 this.steadyIC = new List<int>();
@@ -129,33 +131,37 @@ namespace IPR.AstrandTest
 
                 StartSteadyStateTimer(STEADYSTATE_TIME, STEADYSTATE_INTERVAL);
 
-                SetTimer(MAIN_TEST_TIME, AstrandTestPhase.COOLING_DOWN);
+                
 
             }
 
             private void CoolingDown()
             {
-                steadyStateTimer.Stop();
+            Console.WriteLine("Main Test completed, moving on to Cooling Down");
 
-                Console.WriteLine("Instant Cadence Results: ");
-                foreach (int ic in instantCadence)
-                {
-                    Console.WriteLine(ic);
-                }
-                Console.WriteLine("---------------");
-
-
-                Console.WriteLine("Main Test completed, moving on to Cooling Down");
-
-
-                SetTimer(COOLING_DOWN_TIME, AstrandTestPhase.INACTIVE);
-
-            }
-
-            private void ExtendedTest()
+            if (steadyStateTestSuccesfull)
             {
+                double vo2 = CalculateVO2Max();
+                testWindow.SetText(testWindow.text_VO2Max, vo2.ToString());
+            }
+            else
+            {
+                testWindow.SetText(testWindow.text_VO2Max, "Test Failed");
+                testWindow.SetText(testWindow.text_Instruction, "No Steady State");
 
             }
+
+            steadyStateTimer.Stop();
+            SetTimer(COOLING_DOWN_TIME, AstrandTestPhase.INACTIVE);
+            
+               
+
+
+                
+
+            }
+
+           
 
             private void InActive()
             {
@@ -231,7 +237,14 @@ namespace IPR.AstrandTest
             private void SetTimer(int seconds, AstrandTestPhase nextPhase)
             {
                 this.nextPhase = nextPhase;
+
+                if(myTimer != null)
+                {
+                    myTimer.Dispose();
+                }
+
                 myTimer = new Timer(seconds * 1000);
+                testWindow.SetTimer(seconds);
                 myTimer.Elapsed += OnTimedEvent_ChangePhase;
                 myTimer.Enabled = true;
                 myTimer.Start();
@@ -367,6 +380,12 @@ namespace IPR.AstrandTest
                 }
             }
 
+        public void EmergencyStop()
+        {
+            ChangePhase(AstrandTestPhase.INACTIVE);
+            testWindow.SetText(testWindow.text_Instruction, "EMERGENCY STOP");
+        }
+
             public int GetElapsedTime()
             {
                 int elapsedTime;
@@ -396,11 +415,17 @@ namespace IPR.AstrandTest
                 if (rotation < ROTATIONTARGET_MIN)
                 {
                     Console.WriteLine("GO FASTER!");
+                testWindow.SetUIRotation("GO FASTER!", rotation);
                 }
 
                 else if (rotation > ROTATIONTARGET_MAX)
                 {
                     Console.WriteLine("SLOW DOWN!");
+                testWindow.SetUIRotation("SLOW DOWN!", rotation);
+                }
+                else
+                {
+                testWindow.SetUIRotation(null, rotation);
                 }
             }
 

@@ -47,6 +47,12 @@ namespace IPR.BLEHandling
             }
         }
 
+        public void ChangeResistance(int res)
+        {
+            bleConnection.SetResistance(res);
+        }
+
+
         
     }
 

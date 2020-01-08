@@ -83,7 +83,7 @@ namespace IPR
             {
                 if (ComboBox_Sex.SelectedIndex == 0) { sex = TestWindow.Sex.Male; }
                 if (ComboBox_Sex.SelectedIndex == 1) { sex = TestWindow.Sex.Female; }
-                if (ComboBox_Sex.SelectedIndex == 2) { sex = TestWindow.Sex.Other; }
+               
 
             }
             else

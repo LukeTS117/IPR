@@ -70,7 +70,10 @@ namespace IPR
             bleHandler.handleData(e.Data);
         }
 
-
+        public void SetResistance(int res)
+        {
+            throw new NotImplementedException();
+        }
 
 
     }

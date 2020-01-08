@@ -8,9 +8,9 @@
       d:DesignHeight="720" d:DesignWidth="1080"
       Title="Connect">
 
-    <Grid Background="#FF626262">
+    <Grid Background="#FF153E40">
         <TextBox x:Name="TextBox_ErgoID" HorizontalAlignment="Center" Height="23" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
-        <Button Content="Connect" HorizontalAlignment="Center" Margin="502,387,502,315" VerticalAlignment="Center" Width="76" Click="Button_Click"/>
+        <Button Content="Connect" HorizontalAlignment="Center" Margin="480,387,480,299" VerticalAlignment="Center" Width="120" Click="Button_Click" Background="#FF5DC7C5" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Height="34" FontFamily="Yu Gothic Light" FontSize="20"/>
         <TextBox x:Name="TextBox_PatientID" HorizontalAlignment="Center" Height="23" Margin="480,195,480,502" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
         <TextBox x:Name="TextBox_Age" HorizontalAlignment="Center" Height="23" Margin="480,223,480,474" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
         <TextBox x:Name="TextBox_Weight" HorizontalAlignment="Center" Height="23" Margin="480,279,480,418" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Ergo ID"/>
@@ -19,10 +19,10 @@
         <Label x:Name="Label_Sex" Content="Sex" HorizontalAlignment="Left" Margin="417,248,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="Label_ErgoID" Content="ErgoID" HorizontalAlignment="Left" Margin="417,346,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="Label_Weight" Content="Weight" HorizontalAlignment="Left" Margin="417,276,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <ComboBox x:Name="ComboBox_Sex" HorizontalAlignment="Left" Margin="480,251,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True">
+        <ComboBox x:Name="ComboBox_Sex" HorizontalAlignment="Left" Margin="480,251,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True" BorderBrush="#FF3A7A79" Background="#FFF7F7F7">
             <ComboBoxItem Content="Male"/>
             <ComboBoxItem Content="Female"/>
-            <ComboBoxItem Content="Other"/>
+            
         </ComboBox>
     </Grid>
 </Page>

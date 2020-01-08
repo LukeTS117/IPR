@@ -17,15 +17,15 @@ namespace IPR.AstrandTest
         private static int ROTATIONTARGET_MAX = 60;
         private static int HR_MAX_DIFFERENCE = 5;
         private static int HR_MIN = 130;
-        private static int STEADYSTATE_INTERVAL = 60;
+        private static int STEADYSTATE_INTERVAL = 15;
         private static int STEADYSTATE_TIME = 120;
         private readonly IAstrandData data;
 
         private static double WORKLOAD_CONSTANT = 6.11829727786744;
 
-        private static int WARMING_UP_TIME = 5; //Time in seconds 
-        private static int MAIN_TEST_TIME = 10;
-        private static int COOLING_DOWN_TIME = 5;
+        private static int WARMING_UP_TIME = 120; //Time in seconds 
+        private static int MAIN_TEST_TIME = 240;
+        private static int COOLING_DOWN_TIME = 120;
        
 
         private TestWindow testWindow;
@@ -193,6 +193,11 @@ namespace IPR.AstrandTest
             {
                 int hr = heartFrequency.Last();
 
+                if(hr > maxheartbeat)
+                {
+                    EmergencyStop();
+                    return;
+                }
                 if (hr < HR_MIN)
                 {
                     Console.WriteLine("Heartrate to low to continue");

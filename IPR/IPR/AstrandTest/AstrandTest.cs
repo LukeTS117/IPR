@@ -17,7 +17,7 @@ namespace IPR.AstrandTest
         private static int ROTATIONTARGET_MAX = 60;
         private static int HR_MAX_DIFFERENCE = 5;
         private static int HR_MIN = 130;
-        private static int STEADYSTATE_INTERVAL = 15;
+        private static int STEADYSTATE_INTERVAL = 60;
         private static int STEADYSTATE_TIME = 120;
         private readonly IAstrandData data;
 
@@ -51,6 +51,7 @@ namespace IPR.AstrandTest
         private int weight;
         private bool male;
         private int maxheartbeat;
+        public int resPercentage = 0;
 
 
         private struct DataPoint
@@ -84,6 +85,7 @@ namespace IPR.AstrandTest
             this.heartFrequency = new List<int>();
             this.data.Connect(this);
             this.heartFrequency = new List<int>();
+            
 
             this.age = age;
             this.weight = weight;
@@ -193,11 +195,6 @@ namespace IPR.AstrandTest
             {
                 int hr = heartFrequency.Last();
 
-                if(hr > maxheartbeat)
-                {
-                    EmergencyStop();
-                    return;
-                }
                 if (hr < HR_MIN)
                 {
                     Console.WriteLine("Heartrate to low to continue");
@@ -375,12 +372,14 @@ namespace IPR.AstrandTest
                 if (dataType == DataTypes.IC)
                 {
                     instantCadence.Add(value);
+                    testWindow.SetText(testWindow.text_Cadence, value.ToString());
                     SetRotation(value);
                 }
 
                 if (dataType == DataTypes.HR)
                 {
                     heartFrequency.Add(value);
+                    testWindow.SetText(testWindow.text_HeartRate, value.ToString());
                     this.testWindow.UpdateUI(value);
                 }
             }
@@ -407,12 +406,24 @@ namespace IPR.AstrandTest
 
             public void IncreaseResistance()
             {
-                throw new NotImplementedException();
+                resPercentage += 5;
+                if(resPercentage > 100)
+                {
+                    resPercentage = 100;
+                }    
+
+                data.SetResistance(resPercentage);
             }
 
             public void DecreaseResistance()
             {
-                throw new NotImplementedException();
+                resPercentage -= 5;
+                if (resPercentage < 0)
+                {
+                    resPercentage = 0;
+                }
+
+                data.SetResistance(resPercentage);
             }
 
             public void SetRotation(int rotation)

@@ -101,6 +101,7 @@ namespace IPR.AstrandTest
         public void StartTest()
         {
             this.testStarted = true;
+            data.SetResistance(0);
             ChangePhase(AstrandTestPhase.WARMING_UP);
         }
 

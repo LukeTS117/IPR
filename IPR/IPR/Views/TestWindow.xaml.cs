@@ -135,6 +135,8 @@ namespace IPR
             {
                 SetText(text_Instruction, instruction);
             }
+
+
             
             SetText(text_Cadence, rotation.ToString());
         }

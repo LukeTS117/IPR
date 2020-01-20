@@ -58,7 +58,20 @@ namespace IPR
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-             bool inputCorrect = true;
+            ConfirmSelection();
+        }
+
+        public void OnEnterPressed(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                ConfirmSelection();
+            }
+        }
+
+        public void ConfirmSelection()
+        {
+            bool inputCorrect = true;
 
             TestWindow.Sex sex = TestWindow.Sex.Other;
 
@@ -92,7 +105,8 @@ namespace IPR
             {
                 inputCorrect = false;
                 Label_ErgoID.Foreground = Brushes.Red;
-            } else
+            }
+            else
             {
                 ConnectBLE(TextBox_ErgoID.Text);
             }
@@ -101,7 +115,7 @@ namespace IPR
             {
                 if (ComboBox_Sex.SelectedIndex == 0) { sex = TestWindow.Sex.Male; }
                 if (ComboBox_Sex.SelectedIndex == 1) { sex = TestWindow.Sex.Female; }
-               
+
 
             }
             else
@@ -117,7 +131,6 @@ namespace IPR
             {
                 this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, dataHandler, sim));
             }
-            
         }
 
         public void UpdateUI(string data)

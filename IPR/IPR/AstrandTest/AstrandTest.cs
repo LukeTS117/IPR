@@ -212,8 +212,9 @@ namespace IPR.AstrandTest
         {
             steadyHeartFrequency.Clear();
             steadyIC.Clear();
+            
             steadyStateTimer.Dispose();
-            steadyStateTimer.Close();
+            StartSteadyStateTimer(STEADYSTATE_TIME, STEADYSTATE_INTERVAL);
         }
 
         private void OnTimedEvent_SteadyStateTestFinished(Object source, ElapsedEventArgs e)

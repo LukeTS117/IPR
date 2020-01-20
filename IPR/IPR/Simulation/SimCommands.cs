@@ -16,7 +16,7 @@ namespace IPR.Simulation
 
         private enum eCommand
         {
-            SPEED_UP, SPEED_DOWN, HEARTRATE_UP, HEARTRATE_DOWN, SPEED, HEARTRATE, PRECISION, LAVICTUS
+            SPEED_UP, SPEED_DOWN, HEARTRATE_UP, HEARTRATE_DOWN, SPEED, HEARTRATE, PRECISION, LAVICTUS, SMOOTH_CHANGE
         }
 
         static Dictionary<string, eCommand> _commandlist = new Dictionary<string, eCommand>
@@ -24,11 +24,12 @@ namespace IPR.Simulation
             {"speedup", eCommand.SPEED_UP },
             {"slowdown", eCommand.SPEED_DOWN },
             {"heartup", eCommand.HEARTRATE_UP },
-            {"heartdown", eCommand.HEARTRATE_DOWN},
-            {"speed", eCommand.SPEED},
-            {"heartrate", eCommand.HEARTRATE},
-            {"precision", eCommand.PRECISION},
-            {"lavictus", eCommand.LAVICTUS}
+            {"heartdown", eCommand.HEARTRATE_DOWN },
+            {"speed", eCommand.SPEED },
+            {"heartrate", eCommand.HEARTRATE },
+            {"precision", eCommand.PRECISION },
+            {"lavictus", eCommand.LAVICTUS },
+            {"smooth", eCommand.SMOOTH_CHANGE }
 
         };
         
@@ -79,22 +80,22 @@ namespace IPR.Simulation
             switch (cmd)
             {
                 case eCommand.SPEED_UP:
-                    sim.targetSpeed += value;
+                    sim.NewTargetSP += value;
                     break;
                 case eCommand.SPEED_DOWN:
-                    sim.targetSpeed -= value;
+                    sim.NewTargetSP -= value;
                     break;
                 case eCommand.SPEED:
-                    sim.targetSpeed = value;
+                    sim.NewTargetSP = value;
                     break;
                 case eCommand.HEARTRATE_UP:
-                    sim.targetHeartrate += value;
+                    sim.NewTargetHR += value;
                     break;
                 case eCommand.HEARTRATE_DOWN:
-                    sim.targetHeartrate -= value;
+                    sim.NewTargetHR -= value;
                     break;
                 case eCommand.HEARTRATE:
-                    sim.targetHeartrate = value;
+                    sim.NewTargetHR = value;
                     break;
                 case eCommand.PRECISION:
                     sim.Precision = value;
@@ -135,21 +136,24 @@ namespace IPR.Simulation
             switch (cmd)
             {
                 case eCommand.SPEED_UP:
-                    sim.targetSpeed += INTERVAL;
+                    sim.NewTargetSP += INTERVAL;
                     break;
                 case eCommand.SPEED_DOWN:
-                    sim.targetSpeed -= INTERVAL;
+                    sim.NewTargetSP -= INTERVAL;
                     break;
                 case eCommand.HEARTRATE_UP:
-                    sim.targetHeartrate += INTERVAL;
+                    sim.NewTargetHR += INTERVAL;
                     break;
                 case eCommand.HEARTRATE_DOWN:
-                    sim.targetHeartrate -= INTERVAL;
+                    sim.NewTargetHR -= INTERVAL;
                     break;
                 case eCommand.LAVICTUS:
                     var prs = new ProcessStartInfo("iexplore.exe");
                     prs.Arguments = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
                     Process.Start(prs);
+                    break;
+                case eCommand.SMOOTH_CHANGE:
+                    sim.SmoothChange = !sim.SmoothChange;
                     break;
                 default:
                     Console.WriteLine("Command Not Found!!!");

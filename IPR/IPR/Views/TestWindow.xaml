@@ -12,43 +12,43 @@
       Title="TestWindow" >
 
 
-    <Grid Background="#FF54FAFF">
+    <Grid Background="#FF153E40">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="273*"/>
             <ColumnDefinition Width="127*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="chartGrid" RenderTransformOrigin="1.143,0.26" Margin="292,131,20,9.6" Grid.ColumnSpan="2" Background="#FF2A7D80"/>
+        <Grid x:Name="chartGrid" RenderTransformOrigin="1.143,0.26" Margin="292,131,20,9.6" Grid.ColumnSpan="2" Background="#FF1D2C2C"/>
         <Rectangle HorizontalAlignment="Left" Height="477" Margin="21,233,0,0" Stroke="#FF57BAB9" VerticalAlignment="Top" Width="254"/>
         <Rectangle HorizontalAlignment="Left" Height="159" Margin="21,55,0,0" Stroke="#FF57BAB9" VerticalAlignment="Top" Width="254"/>
-        <TextBlock Name="text_PatientID" Grid.Column="1" Margin="0,36,20,0" TextWrapping="Wrap" Text="PatientID" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
+        <TextBlock Name="text_PatientID" Grid.Column="1" Margin="0,36,20,0" TextWrapping="Wrap" Text="PatientID" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Name="text_Sex" Grid.Column="1" Margin="0,55,20,0" TextWrapping="Wrap" Text="Sex" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF153E40" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
+        <TextBlock Name="text_Sex" Grid.Column="1" Margin="0,55,20,0" TextWrapping="Wrap" Text="Sex" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FFFCFFFF" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Name="text_Age" Grid.Column="1" Margin="0,73,20,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF153E40" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
+        <TextBlock Name="text_Age" Grid.Column="1" Margin="0,73,20,0" TextWrapping="Wrap" Text="Age" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FFFCFFFF" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Name="text_Weight" Grid.Column="1" Margin="0,92,40,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF153E40" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
+        <TextBlock Name="text_Weight" Grid.Column="1" Margin="0,92,40,0" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FFFCFFFF" RenderTransformOrigin="0.378,0.501" HorizontalAlignment="Right" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Grid.Column="1" Margin="0,92,20,0" TextWrapping="Wrap" Text="kg" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF153E40" RenderTransformOrigin="0.46,0.26" HorizontalAlignment="Right" FontSize="16">
+        <TextBlock Grid.Column="1" Margin="0,92,20,0" TextWrapping="Wrap" Text="kg" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FFFCFFFF" RenderTransformOrigin="0.46,0.26" HorizontalAlignment="Right" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
-        <Button Content="Start" HorizontalAlignment="Left" Margin="292,55,0,0" VerticalAlignment="Top" Width="87" Height="59" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Click="Button_StartTest_Click"/>
-        <TextBlock Margin="39,420,415.8,0" TextWrapping="Wrap" Text="Heartrate:" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16">
+        <Button Content="Start" HorizontalAlignment="Left" Margin="292,55,0,0" VerticalAlignment="Top" Width="90" Height="60" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFE2FFFE" Click="Button_StartTest_Click"/>
+        <TextBlock Margin="39,420,415.8,0" TextWrapping="Wrap" Text="Heartrate:" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
         <TextBlock Name="text_HeartRate" Margin="39,447,416.8,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="48" Height="64">
@@ -56,9 +56,9 @@
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Margin="39,516,415.8,0" TextWrapping="Wrap" Text="Cadence:" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16">
+        <TextBlock Margin="39,516,415.8,0" TextWrapping="Wrap" Text="Cadence:" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect>
         </TextBlock>
         <TextBlock Name="text_Cadence" Margin="39,533,415.8,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="48" Height="64">
@@ -66,37 +66,37 @@
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Margin="40,285,414.8,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Instruction:">
+        <TextBlock Margin="40,285,414.8,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Instruction:">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect></TextBlock>
         <TextBlock x:Name="text_Instruction" Margin="40,311,477.8,0" TextWrapping="Wrap" Text="Lavictus" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FFFA7575" RenderTransformOrigin="-7.896,3.958" FontSize="40" Height="104">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Margin="40,67,415.6,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Phase:">
+        <TextBlock Margin="40,67,415.6,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Phase:">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect></TextBlock>
-        <TextBlock x:Name="text_Phase" Margin="40,89,258.6,0" TextWrapping="Wrap" Text="Inactive" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="30" Height="53">
+        <TextBlock x:Name="text_Phase" Margin="40,89,478,0" TextWrapping="Wrap" Text="Inactive" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="30" Height="53">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Margin="40,136,357.6,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Time Left in Phase:">
+        <TextBlock Margin="40,136,357.6,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Time Left in Phase:">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect></TextBlock>
-        <TextBlock x:Name="text_TimeLeft" Margin="40,151,258.6,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="40
+        <TextBlock x:Name="text_TimeLeft" Margin="40,151,478,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="40
                    " Height="53">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Margin="39,602,415.8,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Resistance:">
+        <TextBlock Margin="39,602,415.8,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Resistance:">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect></TextBlock>
         <TextBlock x:Name="text_Resistance" Margin="39,628,415.8,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FF75FAF8" RenderTransformOrigin="-7.896,3.958" FontSize="48" Height="64">
             <TextBlock.Effect>
@@ -104,16 +104,22 @@
             </TextBlock.Effect>
         </TextBlock>
         <Rectangle HorizontalAlignment="Left" Height="78" Margin="513,36,0,0" Stroke="#FF57BAB9" VerticalAlignment="Top" Width="367" Grid.ColumnSpan="2"/>
-        <TextBlock Margin="534,67,120.8,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FF153E40" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="VO2-Max:">
+        <TextBlock Margin="534,67,120.8,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="VO2-Max:">
             <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF4CE0E6"/>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
             </TextBlock.Effect></TextBlock>
         <TextBlock x:Name="text_VO2Max" Margin="621,40,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" FontFamily="Yu Gothic UI Light" Foreground="#FFFA7575" RenderTransformOrigin="-7.896,3.958" FontSize="48" Height="64" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="259" TextAlignment="Center">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
-        <Button Content="Connect" HorizontalAlignment="Left" Margin="391,55,0,0" VerticalAlignment="Top" Width="87" Height="59" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Click="Button_Connect_Click"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="391,55,0,0" VerticalAlignment="Top" Width="90" Height="60" Background="#FF5DC7C5" FontFamily="Yu Gothic UI Light" FontSize="24" BorderBrush="#FF3A7A79" Foreground="#FFC1FBFA" Click="Button_Connect_Click"/>
+        <TextBox x:Name="textbox_SimBox" HorizontalAlignment="Left" Height="24" Margin="77,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="182" Background="#FF272727" BorderBrush="LimeGreen" Visibility="Hidden" IsEnabled="False" Foreground="LimeGreen" KeyDown="OnKeyDownHandler" FontFamily="OCR A Extended"/>
+        
+        <TextBlock x:Name="text_simText" Margin="40,250,665,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Yu Gothic UI Semibold" Foreground="#FFFCFFFF" RenderTransformOrigin="-7.896,3.958" FontSize="16" Text="Sim:" Visibility="Hidden" IsEnabled="False">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="3" Color="#FF272727"/>
+            </TextBlock.Effect></TextBlock>
 
     </Grid>
 </Page>

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace IPR.AstrandTest
 {
-    interface IAstrandData
+    public interface IAstrandData
     {
-        void Connect(IAstrandDataListener listener);
+        int Connect(IAstrandDataListener listener);
         void SetResistance(int percentage);
+
+        void RetryConnection();
     }
 }

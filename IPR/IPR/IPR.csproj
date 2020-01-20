@@ -87,7 +87,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AstrandTest\IAstrandDataListener.cs" />
-    <Compile Include="AstrandTest\SymData.cs" />
+    <Compile Include="Simulation\ISim.cs" />
+    <Compile Include="Simulation\SimCommands.cs" />
+    <Compile Include="Simulation\SimData.cs" />
     <Compile Include="DataTypes.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Views\Connect.xaml.cs">

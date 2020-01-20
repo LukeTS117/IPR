@@ -20,9 +20,10 @@ namespace IPR.BLEHandling
             this.bleConnection = bleConnection;
         }
 
-        public void Connect(IAstrandDataListener listener)
+        public int Connect(IAstrandDataListener listener)
         {
             this.listner = listener;
+            return 0;
         }
 
         public void handleData(byte[] rawData)

@@ -30,6 +30,7 @@ namespace IPR
 
         private delegate void OneArgDelagate();
         public ChartValues<ObservableValue> observableValues { get; set; }
+        private Simulation.ISim sim;
 
 
         private int seconds = 0;
@@ -39,7 +40,7 @@ namespace IPR
 
 
 
-        BLEHandler bLEHandler;
+        IAstrandData dataHandler;
 
         public enum Sex
         {
@@ -59,10 +60,21 @@ namespace IPR
 
 
 
-        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex, BLEHandler bLEHandler)
+
+        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex, IAstrandData dataHandler, Simulation.ISim sim)
         {
             InitializeComponent();
-            this.bLEHandler = bLEHandler;
+
+            if(sim != null)
+            {
+                textbox_SimBox.Visibility = Visibility.Visible;
+                textbox_SimBox.IsEnabled = true;
+                text_simText.Visibility = Visibility.Visible;
+                text_simText.IsEnabled = true;
+                this.sim = sim;
+            }
+
+            this.dataHandler = dataHandler;
 
             CartesianChart ch = new CartesianChart();
             observableValues = new ChartValues<ObservableValue>();
@@ -110,7 +122,7 @@ namespace IPR
                 isMale = true;
             }
 
-            this.at = new AstrandTest.AstrandTest(this, this.bLEHandler, age, weight, isMale);
+            this.at = new AstrandTest.AstrandTest(this, this.dataHandler, age, weight, isMale);
 
         }
 
@@ -121,7 +133,7 @@ namespace IPR
         }
         private void Button_Connect_Click(object Sender, RoutedEventArgs e)
         {
-            bLEHandler.RetryConnection();
+            dataHandler.RetryConnection();
         }
 
         public void UpdateUI(int data)
@@ -169,7 +181,24 @@ namespace IPR
             SetText(text_TimeLeft, string.Format("{0:00}:{1:00}",minutes, seconds));
         }
 
-         
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+            {
+                if (!sim.SendCommand(textbox_SimBox.Text))
+                {
+                    textbox_SimBox.BorderBrush = Brushes.Red;
+                    text_Instruction.Text = "Command Failed";
+                }
+                else
+                {
+                    textbox_SimBox.BorderBrush = Brushes.LimeGreen;
+                }
+
+                textbox_SimBox.Text = "";
+                             
+            }
+        }
 
         public void SetText(TextBlock tb, string text)
         {

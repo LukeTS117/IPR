@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IPR.AstrandTest;
+using IPR.Simulation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +25,8 @@ namespace IPR
     {
 
         private BLEConnect bleConnection;
-       
+        private IAstrandData dataHandler;
+        private ISim sim = null;
 
         public Connect()
         {
@@ -32,10 +35,25 @@ namespace IPR
 
         public bool ConnectBLE(string ergoID)
         {
+            if(ergoID == "0")
+            {
+                
+                dataHandler = CreateSim();
+                
+                return true;
+            }
             bleConnection = new BLEConnect(ergoID);
             bleConnection.Connect();
+            dataHandler = bleConnection.bleHandler;
 
             return true;
+        }
+
+        private IAstrandData CreateSim() 
+        {
+            SimData simData = new SimData();
+            this.sim = simData;
+            return simData; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -97,7 +115,7 @@ namespace IPR
 
             if (inputCorrect)
             {
-                this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, this.bleConnection.bleHandler));
+                this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, dataHandler, sim));
             }
             
         }

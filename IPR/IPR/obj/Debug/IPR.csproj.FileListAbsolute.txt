@@ -49,3 +49,29 @@ D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.r
 D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
 D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
 D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\IPR.exe.config
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\IPR.exe
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\IPR.pdb
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\BLELibrary.dll
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\LiveCharts.dll
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.dll
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\LiveCharts.pdb
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\Views\Connect.g.cs
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\MainWindow.g.cs
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\Views\TestWindow.g.cs
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\App.g.cs
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.cache
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.lref
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\Views\Connect.baml
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\MainWindow.baml
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\Views\TestWindow.baml
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.g.resources
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.exe
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.pdb

@@ -19,6 +19,8 @@ namespace IPR
 
         public BLEHandler bleHandler { get; set; }
 
+        
+
         public BLEConnect(string ergoID)
         {
             this.ergoID = ergoID;
@@ -29,6 +31,7 @@ namespace IPR
 
         public bool Connect()
         {
+                       
             this.connectToBLE(this.ergoBLE, this.heartRateBLE, this.ergoID);
             return connected;
         }
@@ -62,6 +65,8 @@ namespace IPR
             }
 
         }
+
+      
 
         private static void PrintDevices(BLE ergoMeterBle)
         {

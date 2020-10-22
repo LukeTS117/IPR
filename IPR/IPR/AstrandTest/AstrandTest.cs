@@ -79,11 +79,9 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.steadyIC = new List<int>();
-            fileManager = new FileManager();
+           
             this.patientIDlc = patientID;
-            //filemanger startup
-            string localDir = fileManager.createDir(patientID.ToString());
-            localFile = fileManager.creatFile(localDir);
+          
             
 
             if(serverIP != null && port != 0)
@@ -91,7 +89,7 @@ namespace IPR.AstrandTest
                 this.tcpClient = new Client();
                 this.tcpClient.Connect(serverIP, port);
                 this.tcpConnected = true;
-                this.tcpClient.NotifyNewTest(age, weight, male);
+                this.tcpClient.NotifyNewTest(patientID, age, weight, male);
             }
 
             //Checking if the connect returns 0, if so, the connection is with a simulator
@@ -146,18 +144,17 @@ namespace IPR.AstrandTest
             {
                 double vo2 = CalculateVO2Max();
                 testWindow.SetText(testWindow.text_VO2Max, vo2.ToString());
-                if(tcpConnected)
-                {
-                    tcpClient.SendResult(vo2);
+                if(tcpConnected)                 {
+                    tcpClient.SendResult(vo2);
                 }
             }
             else
             {
                 testWindow.SetText(testWindow.text_VO2Max, "Test Failed");
                 testWindow.SetText(testWindow.text_Instruction, "No Steady State");
-                if (tcpConnected)
-                {
-                    tcpClient.SendResult(-1);
+                if (tcpConnected)
+                {
+                    tcpClient.SendResult(-1);
                 }
             }
 
@@ -257,7 +254,6 @@ namespace IPR.AstrandTest
                 steadyStateTimer.Dispose();
                 
                 Console.WriteLine("SteadyStateTest Completed Succesfully!");
-                fileManager.WriteToFile(data.ToString(), localFile);
         }
 #endregion
 

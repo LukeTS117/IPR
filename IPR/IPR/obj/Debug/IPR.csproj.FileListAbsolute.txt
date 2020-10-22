@@ -1,54 +1,3 @@
-C:\git\IPR\IPR\IPR\bin\Debug\IPR.exe.config
-C:\git\IPR\IPR\IPR\bin\Debug\IPR.exe
-C:\git\IPR\IPR\IPR\bin\Debug\IPR.pdb
-C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.dll
-C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.dll
-C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.pdb
-C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
-C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
-C:\git\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml
-C:\git\IPR\IPR\IPR\obj\Debug\Views\Connect.g.cs
-C:\git\IPR\IPR\IPR\obj\Debug\MainWindow.g.cs
-C:\git\IPR\IPR\IPR\obj\Debug\Views\TestWindow.g.cs
-C:\git\IPR\IPR\IPR\obj\Debug\App.g.cs
-C:\git\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.cache
-C:\git\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.lref
-C:\git\IPR\IPR\IPR\obj\Debug\Views\Connect.baml
-C:\git\IPR\IPR\IPR\obj\Debug\MainWindow.baml
-C:\git\IPR\IPR\IPR\obj\Debug\Views\TestWindow.baml
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.g.resources
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.exe
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.pdb
-C:\git\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\Views\Connect.g.cs
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\MainWindow.g.cs
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\Views\TestWindow.g.cs
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\App.g.cs
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.cache
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.lref
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.exe
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.pdb
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\IPR.exe.config
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\IPR.exe
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\IPR.pdb
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\LiveCharts.dll
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.dll
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\LiveCharts.pdb
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\Views\Connect.baml
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\MainWindow.baml
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\Views\TestWindow.baml
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.g.resources
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
-D:\Documents\Avans\TI_1\1.4\IPR\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\IPR.exe.config
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\IPR.exe
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\bin\Debug\IPR.pdb
@@ -72,37 +21,7 @@ E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\V
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.g.resources
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
+E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.exe
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.pdb
-<<<<<<< HEAD
-E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
-=======
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\IPR.exe.config
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\IPR.exe
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\IPR.pdb
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\BLELibrary.dll
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.dll
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.dll
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.pdb
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\Connect.g.cs
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\MainWindow.g.cs
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\TestWindow.g.cs
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\App.g.cs
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.cache
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.lref
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\Connect.baml
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\MainWindow.baml
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\TestWindow.baml
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.g.resources
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.exe
-C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.pdb
->>>>>>> WIP

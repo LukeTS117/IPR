@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ClientServer;
 using IPR.BLEHandling;
@@ -36,16 +37,19 @@ namespace IPR
 
         }
 
-        public void NotifyNewTest(int age, int weight, bool male)
+        public void NotifyNewTest(int patientID, int age, int weight, bool male)
         {
             string sex = "male";
             if (!male)
             {
                 sex = "female";
             }
-
+            ClientServer.ClientServer.Write(this.networkStream, ClientServer.ClientServer.EncodeMessage(ClientServer.ClientServer.NetworkDataType.PI, patientID.ToString()));
+            Thread.Sleep(5);
             ClientServer.ClientServer.Write(this.networkStream, ClientServer.ClientServer.EncodeMessage(ClientServer.ClientServer.NetworkDataType.AG, age.ToString()));
+            Thread.Sleep(5);
             ClientServer.ClientServer.Write(this.networkStream, ClientServer.ClientServer.EncodeMessage(ClientServer.ClientServer.NetworkDataType.WH, weight.ToString()));
+            Thread.Sleep(5);
             ClientServer.ClientServer.Write(this.networkStream, ClientServer.ClientServer.EncodeMessage(ClientServer.ClientServer.NetworkDataType.SX, sex));
         }
 
@@ -56,7 +60,7 @@ namespace IPR
 
         public void SendResult(double result)
         {
-            ClientServer.ClientServer.Write(this.networkStream, ClientServer.ClientServer.EncodeMessage(ClientServer.ClientServer.NetworkDataType.DP, result.ToString()));
+            ClientServer.ClientServer.Write(this.networkStream, ClientServer.ClientServer.EncodeMessage(ClientServer.ClientServer.NetworkDataType.RS, result.ToString()));
         }
     }
 }

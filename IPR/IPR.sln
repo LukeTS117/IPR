@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPR", "IPR\IPR.csproj", "{3095590F-9958-4457-B879-A27FE1753B77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{D3830788-E666-445D-AAEB-698888E4D1D0}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ClientServer", "ClientServer\ClientServer.shproj", "{125B54F7-5638-4873-A240-EFFAD379F274}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ClientServer\ClientServer.projitems*{125b54f7-5638-4873-a240-effad379f274}*SharedItemsImports = 13
+		ClientServer\ClientServer.projitems*{3095590f-9958-4457-b879-a27fe1753b77}*SharedItemsImports = 4
+		ClientServer\ClientServer.projitems*{d3830788-e666-445d-aaeb-698888e4d1d0}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64

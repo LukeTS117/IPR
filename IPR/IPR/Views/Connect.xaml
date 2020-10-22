@@ -36,6 +36,11 @@
                 <DropShadowEffect ShadowDepth="1"/>
             </TextBlock.Effect>
         </TextBlock>
+        <Rectangle HorizontalAlignment="Center" Height="79" Margin="701,228,175,413" Stroke="#FF57BAB9" VerticalAlignment="Center" Width="204"/>
+        <Label x:Name="Label_IP" Content="ServerIP" HorizontalAlignment="Left" Margin="715,240,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_Port" Content="Port" HorizontalAlignment="Left" Margin="715,268,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="TextBox_IP" HorizontalAlignment="Center" Height="23" Margin="773,243,187,454" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter IP"/>
+        <TextBox x:Name="TextBox_Port" HorizontalAlignment="Center" Height="23" Margin="773,271,187,426" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" AutomationProperties.HelpText="Enter Port"/>
 
     </Grid>
 </Page>

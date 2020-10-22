@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -33,6 +34,8 @@ namespace IPR.AstrandTest
         private int weight;
         private int maxheartbeat;
         private int resPercentage = 0;
+        private int patientIDlc;
+        private string localFile;
 
         private static double WORKLOAD_CONSTANT = 6.11829727786744;
         
@@ -64,7 +67,7 @@ namespace IPR.AstrandTest
 
         
 
-        public AstrandTest(object TestWindow, IAstrandData astrandData, int age, int weight, bool male)
+        public AstrandTest(object TestWindow, int patientID, IAstrandData astrandData, int age, int weight, bool male)
         {
             this.testWindow = TestWindow as TestWindow;
             this.data = astrandData;
@@ -72,11 +75,14 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.steadyIC = new List<int>();
-
+            fileManager = new FileManager();
+            this.patientIDlc = patientID;
+            //filemanger startup
+            string localDir = fileManager.createDir(patientID.ToString());
+            localFile = fileManager.creatFile(localDir);
             //Checking if the connect returns 0, if so, the connection is with a simulator
             if (this.data.Connect(this) == 0)
                 runningSim = true;
-
             this.heartFrequency = new List<int>();
 
             this.intervalTimer = new Timer(STEADYSTATE_INTERVAL * 1000);
@@ -215,6 +221,9 @@ namespace IPR.AstrandTest
             
             steadyStateTimer.Dispose();
             StartSteadyStateTimer(STEADYSTATE_TIME, STEADYSTATE_INTERVAL);
+            foreach(DataPoint data in dataPoints.ToList()){
+                fileManager.WriteToFile(data.ToString(), localFile);
+            };
         }
 
         private void OnTimedEvent_SteadyStateTestFinished(Object source, ElapsedEventArgs e)
@@ -226,7 +235,8 @@ namespace IPR.AstrandTest
                 steadyStateTimer.Dispose();
                 
                 Console.WriteLine("SteadyStateTest Completed Succesfully!");
-            }
+                fileManager.WriteToFile(data.ToString(), localFile);
+        }
 #endregion
 
 #region Phase Timer
@@ -269,9 +279,9 @@ namespace IPR.AstrandTest
         {
             public DataTypes dataType { get; set; }
             public int value { get; set; }
-            public int elapsedTime { get; set; }
+            public double elapsedTime { get; set; }
 
-            public DataPoint(DataTypes dataType, int value, int elapsedTime)
+            public DataPoint(DataTypes dataType, int value, double elapsedTime)
             {
                 this.dataType = dataType;
                 this.value = value;
@@ -385,9 +395,9 @@ namespace IPR.AstrandTest
             }
         }
 
-        public int GetElapsedTime()
+        public double GetElapsedTime()
         {
-            int elapsedTime;
+            double elapsedTime;
 
             if (elapsedStopWatch != null)
             {

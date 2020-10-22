@@ -75,4 +75,34 @@ E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\I
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.exe
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.pdb
+<<<<<<< HEAD
 E:\Projects\School_Projects\Avans\Periode 2.1\IPR-ButNEW\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
+=======
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\IPR.exe.config
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\IPR.exe
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\IPR.pdb
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\BLELibrary.dll
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.dll
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.pdb
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.xml
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csprojAssemblyReference.cache
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\Connect.g.cs
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\MainWindow.g.cs
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\TestWindow.g.cs
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\App.g.cs
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.cache
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR_MarkupCompile.lref
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\Connect.baml
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\MainWindow.baml
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\Views\TestWindow.baml
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.g.resources
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.Properties.Resources.resources
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csproj.GenerateResource.cache
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csproj.CoreCompileInputs.cache
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.csproj.CopyComplete
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.exe
+C:\Users\luket\OneDrive\Documents\GIT\IPR\IPR\IPR\obj\Debug\IPR.pdb
+>>>>>>> WIP

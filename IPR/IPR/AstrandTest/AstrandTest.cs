@@ -4,15 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Windows.Documents;
-
+using System.Windows.Documents;
+
 namespace IPR.AstrandTest
 {
     class AstrandTest : IAstrandDataListener
-    {
+    {
 #region variables
         private AstrandTestPhase current_phase = AstrandTestPhase.INACTIVE;
         private static int ROTATIONTARGET_MIN = 50;
@@ -28,16 +29,18 @@ namespace IPR.AstrandTest
 
         private static int WARMING_UP_TIME = 120; //Time in seconds 
         private static int MAIN_TEST_TIME = 240;
-        private static int COOLING_DOWN_TIME = 120;
-
+        private static int COOLING_DOWN_TIME = 120;
+
         private int age;
-        private int weight;
+        private int weight;
         private int maxheartbeat;
         private int resPercentage = 0;
+        private int patientIDlc;
+        private string localFile;
 
         private static double WORKLOAD_CONSTANT = 6.11829727786744;
         
-        private readonly IAstrandData data;
+        private readonly IAstrandData data;
         private AstrandTestPhase nextPhase;
 
         private TestWindow testWindow;
@@ -46,7 +49,7 @@ namespace IPR.AstrandTest
 
         private List<DataPoint> dataPoints;
         private List<int> instantCadence;
-        private List<int> heartFrequency;
+        private List<int> heartFrequency;
         private List<int> steadyHeartFrequency;
         private List<int> steadyIC;
 
@@ -63,12 +66,12 @@ namespace IPR.AstrandTest
         private bool male;
         private bool tcpConnected = false;
         private bool emergencystop = false;
-        
+        
 #endregion
-
+
         
 
-        public AstrandTest(object TestWindow, IAstrandData astrandData, int age, int weight, bool male, string serverIP = null, int port = 0)
+        public AstrandTest(object TestWindow, int patientID, IAstrandData astrandData, int age, int weight, bool male, string serverIP = null, int port = 0)
         {
             this.testWindow = TestWindow as TestWindow;
             this.data = astrandData;
@@ -76,20 +79,24 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.steadyIC = new List<int>();
+            fileManager = new FileManager();
+            this.patientIDlc = patientID;
+            //filemanger startup
+            string localDir = fileManager.createDir(patientID.ToString());
+            localFile = fileManager.creatFile(localDir);
             
 
-            if(serverIP != null && port != 0)
-            {
-                this.tcpClient = new Client();
-                this.tcpClient.Connect(serverIP, port);
-                this.tcpConnected = true;
-                this.tcpClient.NotifyNewTest(age, weight, male);
+            if(serverIP != null && port != 0)
+            {
+                this.tcpClient = new Client();
+                this.tcpClient.Connect(serverIP, port);
+                this.tcpConnected = true;
+                this.tcpClient.NotifyNewTest(age, weight, male);
             }
 
             //Checking if the connect returns 0, if so, the connection is with a simulator
             if (this.data.Connect(this) == 0)
                 runningSim = true;
-
             this.heartFrequency = new List<int>();
 
             this.intervalTimer = new Timer(STEADYSTATE_INTERVAL * 1000);
@@ -109,12 +116,12 @@ namespace IPR.AstrandTest
             ChangePhase(AstrandTestPhase.WARMING_UP);
         }
 
-       
-
-
-
+       
+
+
+
 #region Phases
-
+
         private void WarmingUp()
         {
             SetTimer(WARMING_UP_TIME, AstrandTestPhase.MAIN_TEST);
@@ -139,18 +146,18 @@ namespace IPR.AstrandTest
             {
                 double vo2 = CalculateVO2Max();
                 testWindow.SetText(testWindow.text_VO2Max, vo2.ToString());
-                if(tcpConnected)
-                {
-                    tcpClient.SendResult(vo2);
+                if(tcpConnected)
+                {
+                    tcpClient.SendResult(vo2);
                 }
             }
             else
             {
                 testWindow.SetText(testWindow.text_VO2Max, "Test Failed");
                 testWindow.SetText(testWindow.text_Instruction, "No Steady State");
-                if (tcpConnected)
-                {
-                    tcpClient.SendResult(-1);
+                if (tcpConnected)
+                {
+                    tcpClient.SendResult(-1);
                 }
             }
 
@@ -161,32 +168,32 @@ namespace IPR.AstrandTest
         private void InActive()
         {
             Console.WriteLine("Cooling Down completed, deactivating test");
-        }
-
+        }
+
         private void ChangePhase(AstrandTestPhase phase)
         {
             if (phase == AstrandTestPhase.WARMING_UP) { this.WarmingUp(); testWindow.SetText(testWindow.text_Phase, "Warming Up"); }
             else if (phase == AstrandTestPhase.MAIN_TEST) { this.MainTest(); testWindow.SetText(testWindow.text_Phase, "Main Test"); }
-            else if (phase == AstrandTestPhase.COOLING_DOWN) { this.CoolingDown(); testWindow.SetText(testWindow.text_Phase, "Cooling Down"); }
-
-
+            else if (phase == AstrandTestPhase.COOLING_DOWN) { this.CoolingDown(); testWindow.SetText(testWindow.text_Phase, "Cooling Down"); }
+
+
             else if (phase == AstrandTestPhase.INACTIVE) { this.InActive(); testWindow.SetText(testWindow.text_Phase, "Inactive"); }
 
-            current_phase = phase;
-
-        }
+            current_phase = phase;
+
+        }
         #endregion
-
-#region Steady State Timer
-
+
+#region Steady State Timer
+
         private void StartSteadyStateTimer(int seconds, int interval)
         {
             intervalTimer.Dispose();
-            steadyStateTimer.Dispose();
-
-            if (intervalTimer != null)
-            {
-                intervalTimer.Dispose();
+            steadyStateTimer.Dispose();
+
+            if (intervalTimer != null)
+            {
+                intervalTimer.Dispose();
             }
 
             STEADYSTATE_INTERVAL = interval;
@@ -236,21 +243,25 @@ namespace IPR.AstrandTest
             
             steadyStateTimer.Dispose();
             StartSteadyStateTimer(STEADYSTATE_TIME, STEADYSTATE_INTERVAL);
+            foreach(DataPoint data in dataPoints.ToList()){
+                fileManager.WriteToFile(data.ToString(), localFile);
+            };
         }
 
         private void OnTimedEvent_SteadyStateTestFinished(Object source, ElapsedEventArgs e)
             {
                 steadyStateTestSuccesfull = true;
-                intervalTimer.Stop();
-                intervalTimer.Dispose();
+                intervalTimer.Stop();
+                intervalTimer.Dispose();
                 steadyStateTimer.Stop();
                 steadyStateTimer.Dispose();
                 
                 Console.WriteLine("SteadyStateTest Completed Succesfully!");
-            }
+                fileManager.WriteToFile(data.ToString(), localFile);
+        }
 #endregion
-
-#region Phase Timer
+
+#region Phase Timer
         private void SetTimer(int seconds, AstrandTestPhase nextPhase)
         {
             this.nextPhase = nextPhase;
@@ -263,12 +274,12 @@ namespace IPR.AstrandTest
 
         private void OnTimedEvent_ChangePhase(Object source, ElapsedEventArgs e)
         {
-            ChangePhase(nextPhase);
+            ChangePhase(nextPhase);
             myTimer.Dispose();
-        }
-        #endregion
-
-#region Resistance
+        }
+        #endregion
+
+#region Resistance
         private void ResistanceIntervalTimer()
         {
             intervalTimer = new Timer(CHANGE_RESISTANCE_INTERVAL * 1000);
@@ -282,17 +293,17 @@ namespace IPR.AstrandTest
             resistanceUpdate = true;
             intervalTimer.Dispose();
             ResistanceIntervalTimer();
-        }
+        }
         #endregion
-
+
 #region DataHandling
         private struct DataPoint
         {
             public DataTypes dataType { get; set; }
             public int value { get; set; }
-            public int elapsedTime { get; set; }
+            public double elapsedTime { get; set; }
 
-            public DataPoint(DataTypes dataType, int value, int elapsedTime)
+            public DataPoint(DataTypes dataType, int value, double elapsedTime)
             {
                 this.dataType = dataType;
                 this.value = value;
@@ -347,9 +358,9 @@ namespace IPR.AstrandTest
         {
             DataPoint dataPoint = new DataPoint(dataType, value, this.GetElapsedTime());
 
-            if(tcpConnected)
-            {
-                tcpClient.SendDataPoint(dataPoint.ToString());
+            if(tcpConnected)
+            {
+                tcpClient.SendDataPoint(dataPoint.ToString());
             }
 
             if (!testStarted)
@@ -361,7 +372,7 @@ namespace IPR.AstrandTest
 
             if (dataType == DataTypes.IC)
             {
-                instantCadence.Add(value);
+                instantCadence.Add(value);
                 steadyIC.Add(value);
                 testWindow.SetText(testWindow.text_Cadence, value.ToString());
                 SetRotation(value);
@@ -369,21 +380,21 @@ namespace IPR.AstrandTest
 
             if (dataType == DataTypes.HR)
             {
-                if (value >= maxheartbeat)
-                {
-                    EmergencyStop();
+                if (value >= maxheartbeat)
+                {
+                    EmergencyStop();
                 }
                 heartFrequency.Add(value);
-                testWindow.SetText(testWindow.text_HeartRate, value.ToString());
-                if (value < HR_MIN)
-                {
-                    IncreaseResistance();
-
-                }
-                if (current_phase == AstrandTestPhase.COOLING_DOWN)
-                {
-                    DecreaseResistance();
-                }
+                testWindow.SetText(testWindow.text_HeartRate, value.ToString());
+                if (value < HR_MIN)
+                {
+                    IncreaseResistance();
+
+                }
+                if (current_phase == AstrandTestPhase.COOLING_DOWN)
+                {
+                    DecreaseResistance();
+                }
                 this.testWindow.UpdateUI(value);
             }
         }
@@ -393,8 +404,8 @@ namespace IPR.AstrandTest
             ChangePhase(AstrandTestPhase.INACTIVE);
             testWindow.SetText(testWindow.text_Instruction, "EMERGENCY STOP");
             testWindow.SetText(testWindow.text_VO2Max, "STOP");
-        }
-
+        }
+
         public void SetRotation(int rotation)
         {
             if (rotation < ROTATIONTARGET_MIN)
@@ -410,11 +421,11 @@ namespace IPR.AstrandTest
             {
                 testWindow.SetUIRotation("Keep Pace", rotation);
             }
-        }
-
-        public int GetElapsedTime()
+        }
+
+        public double GetElapsedTime()
         {
-            int elapsedTime;
+            double elapsedTime;
 
             if (elapsedStopWatch != null)
             {
@@ -425,8 +436,8 @@ namespace IPR.AstrandTest
             elapsedStopWatch = new Stopwatch();
             elapsedStopWatch.Start();
             return 0;
-        }
-
+        }
+
         public void IncreaseResistance()
         {
             if (resistanceUpdate == true)
@@ -508,8 +519,8 @@ namespace IPR.AstrandTest
 
 
                 return VO2max;
-            }
-
+            }
+
 #endregion
         
 

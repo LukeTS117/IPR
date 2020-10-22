@@ -14,21 +14,22 @@ namespace IPR
 
         public FileManager()
         {
-            dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ClientData";
+            dir = @"C:\ClientData";
         }
 
-        public void createDir(string clientID)
+        public string createDir(string clientID)
         {
+            string localDir = dir + @"\" + clientID;
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
 
-            if (!Directory.Exists(dir + @"\" + clientID))
+            if (!Directory.Exists(localDir))
             {
-                Directory.CreateDirectory(dir + @"\" + clientID);
+                Directory.CreateDirectory(localDir);
             }
-
+            return localDir;
         }
 
         public List<string> selectDir()
@@ -58,18 +59,21 @@ namespace IPR
         }
 
 
-        public void WriteToFile(string message, string chosenDir)
+        public void WriteToFile(string message, string dir)
         {
-            using (StreamWriter sr = File.AppendText(chosenDir))
+            
+            using (StreamWriter sr = File.AppendText(dir))
             {
                 sr.WriteLine(message);
                 sr.Close();
             }
         }
 
-        public void creatFile(string chosenDir)
+        public string creatFile(string chosenDir)
         {
-            File.Create(dir + @"\" + chosenDir + @"\" + DateTime.Now.ToString());
+            string filepath = chosenDir + @"\" + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            File.Create(filepath);
+            return filepath;
         }
 
 

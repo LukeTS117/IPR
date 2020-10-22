@@ -122,7 +122,7 @@ namespace IPR
                 isMale = true;
             }
 
-            this.at = new AstrandTest.AstrandTest(this, this.dataHandler, age, weight, isMale, serverIP, port);
+            this.at = new AstrandTest.AstrandTest(this, this.patientID, this.dataHandler, age, weight, isMale, serverIP, port);
 
         }
 

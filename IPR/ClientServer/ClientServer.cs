@@ -7,30 +7,29 @@ namespace ClientServer
 {
     class ClientServer
     {
-        public enum NetworkType
+        public enum NetworkDataType
         {
-            HR, //Heartrate 
-            IC, //Instant Cadence
-            ID, //Patient ID
-            WH, //Weight
-            SX, //Sex (Male or Female)
+            DP, //Datapoint
             AG, //Age
-            EI, //Ergo ID
+            WH, //Wheight
+            PI, //Patient ID
+            SX, //Sex: Male/Female
+            RS, //Result
             
         }
-        public void Write(NetworkStream nws, string message)
+        public static void Write(NetworkStream nws, string message)
         {
             byte[] packet = Encoding.ASCII.GetBytes(message);
             nws.Write(packet, 0, packet.Length);
             nws.Flush();
         }
 
-        public void EncodeMessage()
+        public static string EncodeMessage(NetworkDataType type, string message)
         {
-
+            return "<" + type.ToString() + ">" + message;
         }
 
-        public void DecodeMessage()
+        public static void DecodeMessage()
         {
 
         }

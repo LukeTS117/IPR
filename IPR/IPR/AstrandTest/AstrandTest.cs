@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Documents;
 
 namespace IPR.AstrandTest
 {
@@ -61,6 +62,7 @@ namespace IPR.AstrandTest
         private bool runningSim;
         private bool male;
         private bool tcpConnected = false;
+        private bool emergencystop = false;
         
 #endregion
 
@@ -74,12 +76,14 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.steadyIC = new List<int>();
+            
 
             if(serverIP != null && port != 0)
             {
                 this.tcpClient = new Client();
                 this.tcpClient.Connect(serverIP, port);
                 this.tcpConnected = true;
+                this.tcpClient.NotifyNewTest(age, weight, male);
             }
 
             //Checking if the connect returns 0, if so, the connection is with a simulator
@@ -135,11 +139,19 @@ namespace IPR.AstrandTest
             {
                 double vo2 = CalculateVO2Max();
                 testWindow.SetText(testWindow.text_VO2Max, vo2.ToString());
+                if(tcpConnected)
+                {
+                    tcpClient.SendResult(vo2);
+                }
             }
             else
             {
                 testWindow.SetText(testWindow.text_VO2Max, "Test Failed");
                 testWindow.SetText(testWindow.text_Instruction, "No Steady State");
+                if (tcpConnected)
+                {
+                    tcpClient.SendResult(-1);
+                }
             }
 
             steadyStateTimer.Stop();
@@ -335,6 +347,11 @@ namespace IPR.AstrandTest
         {
             DataPoint dataPoint = new DataPoint(dataType, value, this.GetElapsedTime());
 
+            if(tcpConnected)
+            {
+                tcpClient.SendDataPoint(dataPoint.ToString());
+            }
+
             if (!testStarted)
             {
                 StartTest();
@@ -375,6 +392,7 @@ namespace IPR.AstrandTest
         {
             ChangePhase(AstrandTestPhase.INACTIVE);
             testWindow.SetText(testWindow.text_Instruction, "EMERGENCY STOP");
+            testWindow.SetText(testWindow.text_VO2Max, "STOP");
         }
 
         public void SetRotation(int rotation)
@@ -404,7 +422,8 @@ namespace IPR.AstrandTest
                 elapsedStopWatch.Restart();
                 return elapsedTime;
             }
-
+            elapsedStopWatch = new Stopwatch();
+            elapsedStopWatch.Start();
             return 0;
         }
 

@@ -33,6 +33,10 @@ namespace Server
         {
             int bytesRead = networkStream.EndRead(ar);
             string message = Encoding.ASCII.GetString(this.buffer);
+            Console.WriteLine(message);
+            
+            buffer = new byte[1024];
+            this.networkStream.BeginRead(this.buffer, 0, this.buffer.Length, new AsyncCallback(this.OnRead), null);
         }
     }
 }

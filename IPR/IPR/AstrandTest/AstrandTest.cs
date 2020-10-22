@@ -41,6 +41,7 @@ namespace IPR.AstrandTest
 
         private TestWindow testWindow;
         private FileManager fileManager;
+        private Client tcpClient;
 
         private List<DataPoint> dataPoints;
         private List<int> instantCadence;
@@ -59,12 +60,13 @@ namespace IPR.AstrandTest
         private bool resistanceUpdate = true;
         private bool runningSim;
         private bool male;
+        private bool tcpConnected = false;
         
 #endregion
 
         
 
-        public AstrandTest(object TestWindow, IAstrandData astrandData, int age, int weight, bool male)
+        public AstrandTest(object TestWindow, IAstrandData astrandData, int age, int weight, bool male, string serverIP = null, int port = 0)
         {
             this.testWindow = TestWindow as TestWindow;
             this.data = astrandData;
@@ -72,6 +74,13 @@ namespace IPR.AstrandTest
             this.instantCadence = new List<int>();
             this.heartFrequency = new List<int>();
             this.steadyIC = new List<int>();
+
+            if(serverIP != null && port != 0)
+            {
+                this.tcpClient = new Client();
+                this.tcpClient.Connect(serverIP, port);
+                this.tcpConnected = true;
+            }
 
             //Checking if the connect returns 0, if so, the connection is with a simulator
             if (this.data.Connect(this) == 0)

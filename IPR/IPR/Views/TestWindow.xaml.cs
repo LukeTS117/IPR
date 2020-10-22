@@ -61,7 +61,7 @@ namespace IPR
 
 
 
-        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex, IAstrandData dataHandler, Simulation.ISim sim)
+        public TestWindow(int patientID, int age, int weight, int ergoID, Sex sex, IAstrandData dataHandler, Simulation.ISim sim, string serverIP = null, int port = 0)
         {
             InitializeComponent();
 
@@ -122,7 +122,7 @@ namespace IPR
                 isMale = true;
             }
 
-            this.at = new AstrandTest.AstrandTest(this, this.dataHandler, age, weight, isMale);
+            this.at = new AstrandTest.AstrandTest(this, this.dataHandler, age, weight, isMale, serverIP, port);
 
         }
 

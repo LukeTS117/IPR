@@ -4,27 +4,28 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using ClientServer;
 
-namespace IPR
+namespace Server
 {
     class Client
     {
-        private readonly TcpClient tcpClient;
+        private TcpClient tcpClient;
         private NetworkStream networkStream;
         private byte[] buffer;
-        public string message;
-
-        public Client()
+        private int clientID{ get; set; }
+        
+        public Client(TcpClient newClient, int clientID)
         {
-            tcpClient = new TcpClient();
-            this.buffer = new byte[1024];
+            this.clientID = clientID;
+            this.startClient(newClient);
         }
 
-        public void Connect(string server, int port)
+        private void startClient(TcpClient newClient)
         {
-            this.tcpClient.Connect(server, port);
-            this.networkStream =  this.tcpClient.GetStream();
+            this.tcpClient = newClient;
+            this.networkStream = this.tcpClient.GetStream();
+            this.buffer = new byte[1024];
+
             this.networkStream.BeginRead(this.buffer, 0, this.buffer.Length, new AsyncCallback(this.OnRead), null);
         }
 
@@ -32,12 +33,6 @@ namespace IPR
         {
             int bytesRead = networkStream.EndRead(ar);
             string message = Encoding.ASCII.GetString(this.buffer);
-
-        }
-
-        public void NotifyNewTest()
-        {
-
         }
     }
 }

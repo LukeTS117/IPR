@@ -81,6 +81,8 @@ namespace IPR
             Label_Weight.Foreground = Brushes.White;
             Label_ErgoID.Foreground = Brushes.White;
             Label_Sex.Foreground = Brushes.White;
+            Label_IP.Foreground = Brushes.White;
+            Label_Port.Foreground = Brushes.White;
 
 
             //Check all fields for correct input, else change label color to red // //  
@@ -124,12 +126,27 @@ namespace IPR
                 Label_Sex.Foreground = Brushes.Red;
             }
 
+            if  (!int.TryParse(TextBox_Port.Text, out int port) && TextBox_Port.Text.Length > 0)
+            {
+                inputCorrect = false;
+                Label_Port.Foreground = Brushes.Red;
+            }
+
             // // // // 
 
 
             if (inputCorrect)
             {
-                this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, dataHandler, sim));
+                if(TextBox_IP.Text.Length > 0 && TextBox_Port.Text.Length>0)
+                {
+                    this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, dataHandler, sim, TextBox_IP.Text, port));
+                }
+                else
+                {
+                    this.NavigationService.Navigate(new TestWindow(patientID, age, weight, ergoID, sex, dataHandler, sim));
+                }
+
+               
             }
         }
 
